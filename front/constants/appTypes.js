@@ -1,0 +1,4 @@
+export const GET_DAY_PROCESS = 'GET_DAY_PROCESS'
+export const GET_DAY_SUCCESS = 'GET_DAY_SUCCESS'
+export const GET_DAY_FAILURE = 'GET_DAY_FAILURE'
+export const DESELECT_DAY = 'DESELECT_DAY'

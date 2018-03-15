@@ -1,0 +1,30 @@
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  overflow-x: hidden;
+
+  .app {
+    position: absolute;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+
+    .content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .col-1 {
+      flex-grow: 1;
+    }
+    .col-8 {
+      flex-grow: 8;
+    }
+  }
+}
