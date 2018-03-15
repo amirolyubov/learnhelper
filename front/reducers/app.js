@@ -18,7 +18,7 @@ const initialState = {
       start: 1520007954000,
       end: 1521131154000,
       holydays: true,
-      _top: 20,
+      _top: 15,
       _color: 'lightgreen'
     },
     {
@@ -27,7 +27,7 @@ const initialState = {
       start: 1520231240000,
       end: 1520931154000,
       holydays: true,
-      _top: 30,
+      _top: 20,
       _color: 'lightpink'
     }
   ],

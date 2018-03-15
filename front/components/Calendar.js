@@ -31,8 +31,8 @@ class Calendar extends Component {
         <rect
           key={key}
           width='100%'
-          height='3px'
-          y={`calc(50% + ${params.top})`}
+          height='1px'
+          y={`calc(80% - ${params.top})`}
           fill={params.color}
           ></rect>
       )
@@ -41,15 +41,15 @@ class Calendar extends Component {
         <g key={key}>
           <circle
             cx='35%'
-            cy={`calc(50% + ${params.top} + 1.5px)`}
-            r='4px'
+            cy={`calc(80% - ${params.top} + 0.5px)`}
+            r='2px'
             fill={params.color}
             />
           <rect
             width='65%'
-            height='3px'
+            height='1px'
             x='35%'
-            y={`calc(50% + ${params.top})`}
+            y={`calc(80% - ${params.top})`}
             fill={params.color}
             ></rect>
         </g>
@@ -59,14 +59,14 @@ class Calendar extends Component {
         <g key={key}>
           <circle
             cx='65%'
-            cy={`calc(50% + ${params.top} + 1.5px)`}
-            r='4px'
+            cy={`calc(80% - ${params.top} + 0.5px)`}
+            r='2px'
             fill={params.color}
             />
           <rect
             width='65%'
-            height='3px'
-            y={`calc(50% + ${params.top})`}
+            height='1px'
+            y={`calc(80% - ${params.top})`}
             fill={params.color}
             ></rect>
         </g>
