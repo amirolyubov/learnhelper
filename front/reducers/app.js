@@ -16,7 +16,7 @@ const initialState = {
       title: 'Алгоритмы. Построение и анализ',
       author: 'Корман',
       start: 1520007954000,
-      end: 1521131154000,
+      end: 1521831154000,
       holydays: true,
       _top: 15,
       _color: 'lightgreen'
@@ -25,7 +25,7 @@ const initialState = {
       title: 'Python',
       author: 'Лутз',
       start: 1520231240000,
-      end: 1520931154000,
+      end: 1521431154000,
       holydays: true,
       _top: 20,
       _color: 'lightpink'

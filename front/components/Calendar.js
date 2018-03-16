@@ -31,7 +31,7 @@ class Calendar extends Component {
         <rect
           key={key}
           width='100%'
-          height='1px'
+          height='2px'
           y={`calc(80% - ${params.top})`}
           fill={params.color}
           ></rect>
@@ -41,13 +41,13 @@ class Calendar extends Component {
         <g key={key}>
           <circle
             cx='35%'
-            cy={`calc(80% - ${params.top} + 0.5px)`}
-            r='2px'
+            cy={`calc(80% - ${params.top} + 1px)`}
+            r='3px'
             fill={params.color}
             />
           <rect
             width='65%'
-            height='1px'
+            height='2px'
             x='35%'
             y={`calc(80% - ${params.top})`}
             fill={params.color}
@@ -59,13 +59,13 @@ class Calendar extends Component {
         <g key={key}>
           <circle
             cx='65%'
-            cy={`calc(80% - ${params.top} + 0.5px)`}
-            r='2px'
+            cy={`calc(80% - ${params.top} + 1px)`}
+            r='3px'
             fill={params.color}
             />
           <rect
             width='65%'
-            height='1px'
+            height='2px'
             y={`calc(80% - ${params.top})`}
             fill={params.color}
             ></rect>
@@ -98,6 +98,7 @@ class Calendar extends Component {
         onClick={this.handleDayClick.bind(this, day)}
         className={cn(
           day == null ? 'noday' : 'day',
+          day == new Date().getDate() && 'today',
           day == selected && 'selected',
           (key == 5 || key == 6) && 'holyday'
         )}

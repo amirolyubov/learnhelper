@@ -6,9 +6,9 @@ import { Books } from './info'
 
 class Info extends Component {
   renderByType() {
-    const {data} = this.props
+    const { data, actions } = this.props
     switch (data.infoDataType) {
-      case infoDataTypes.BOOKS: return <Books />
+      case infoDataTypes.BOOKS: return <Books data={data} actions={actions} />
       default: break;
     }
   }
