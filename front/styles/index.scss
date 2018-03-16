@@ -9,15 +9,20 @@ html, body {
 
   .app {
     position: absolute;
-    padding-top: 20px;
     padding-bottom: 40px;
     width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100% - 40px);
     display: flex;
 
-    .content {
+    .contentWrapper {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+
+      .content {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+      }
     }
 
     .col-1 {

@@ -1,5 +1,5 @@
 import * as appTypes from '../constants/appTypes.js'
-
+import * as infoDataTypes from '../constants/infoDataTypes.js'
 const initialState = {
   books: [
     {
@@ -32,10 +32,12 @@ const initialState = {
     }
   ],
   events: [],
-  day: {},
-  err: {},
+  info: {},
 
-  isDayLoading: false
+  // META
+  isDayLoading: false,
+  infoDataType: infoDataTypes.BOOKS,
+  err: {}
 }
 
 const app = (state = initialState, action) => {

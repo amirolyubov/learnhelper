@@ -1,0 +1,5 @@
+export const BOOKS = 'books'
+export const DAY = 'day'
+export const BOOK = 'book'
+export const EVENT = 'event'
+export const ADD_NEW = 'add_new'

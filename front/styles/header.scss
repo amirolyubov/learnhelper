@@ -1,0 +1,72 @@
+@import "./variables.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: $color_header_bg;
+  font-family: $font_numbers;
+  margin: 15px 0 25px;
+  padding: 3px 30px;
+
+  span {
+    font-size: 20px;
+    color: $color_calendar_num_border;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: $color_day;
+      font-weight: 300;
+    }
+    .menuButton {
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      background-image: url('./icons/bars.svg');
+      background-position: center;
+      background-size: cover;
+      margin-left: 30px;
+      z-index: 999;
+
+      .menu {
+        display: flex;
+        transition: 0.3s;
+        flex-direction: column;
+        cursor: default;
+        margin-left: -95px;
+        margin-top: 25px;
+        padding: 20px 20px;
+        transform: translateY(-250px);
+        background-color: $color_header_menu_bg;
+      }
+      &:hover {
+        transition: 0.3s;
+      }
+      &:hover .menu {
+        transform: none;
+        transition: 0.3s;
+
+        span:last-child {
+          border-top: 1px solid $color_calendar_num;
+          margin-top: 5px;
+        }
+
+        span {
+          text-transform: uppercase;
+          font-size: 15px;
+          cursor: pointer;
+          color: $color_calendar_num_border;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

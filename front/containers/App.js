@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as appActions from '../actions/app.js'
-import { Calendar, Info } from '../components'
+import { Calendar, Info, Header } from '../components'
 
 class App extends Component {
   render() {
@@ -12,12 +12,18 @@ class App extends Component {
     return (
       <div className='app'>
         <div className='col-1'></div>
-        <div className='content col-8'>
-          <Info />
-          <Calendar
-            data={app}
-            actions={actions}
-            />
+        <div className='contentWrapper col-8'>
+          <Header />
+          <div className='content'>
+            <Info
+              data={app}
+              actions={actions}
+              />
+            <Calendar
+              data={app}
+              actions={actions}
+              />
+          </div>
         </div>
         <div className='col-1'></div>
       </div>
