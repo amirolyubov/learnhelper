@@ -33,3 +33,16 @@ export const deselectDay = () => {
     type: appTypes.DESELECT_DAY
   }
 }
+
+export const hoverBook = book => {
+  return {
+    type: appTypes.HOVER_BOOK,
+    payload: { book }
+  }
+}
+
+export const add = () => {
+  return {
+    type: appTypes.ADD_NEW
+  }
+}

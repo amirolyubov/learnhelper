@@ -4,13 +4,15 @@ import { spliceString, timestamps2percents } from '../../utils/utils.js'
 class Books extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      hoveredBook: -1,
-    }
   }
 
   handleBookHover(book) {
-    this.setState({ hoveredBook: book })
+    const { actions: { hoverBook } } = this.props
+    hoverBook(book)
+  }
+  handleAddClick() {
+    const { actions: { add } } = this.props
+    add()
   }
 
   renderBookGraph(book) {
@@ -22,7 +24,6 @@ class Books extends Component {
     )
   }
   renderBook(book, key) {
-    const { hoveredBook } = this.state
     return (
       <div
         key={key}
@@ -43,11 +44,11 @@ class Books extends Component {
   render() {
     const { data } = this.props
     return (
-      <div className='booksWrapper'>
+      <div>
         <h1>Инфо</h1>
-        <h2>Книги</h2>
+        <h2>Книги <div onClick={this.handleAddClick.bind(this)}></div></h2>
         <div className='books'>{ data.books.map(this.renderBook.bind(this)) }</div>
-        <h2>События</h2>
+        <h2>Статистика</h2>
       </div>
     )
   }

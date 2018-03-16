@@ -9,7 +9,7 @@ const initialState = {
       start: 1520351240000,
       end: 1521992840000,
       holydays: false,
-      _top: 10,
+      _top: 0,
       _color: 'lightblue'
     },
     {
@@ -18,7 +18,7 @@ const initialState = {
       start: 1520007954000,
       end: 1521831154000,
       holydays: true,
-      _top: 15,
+      _top: 10,
       _color: 'lightgreen'
     },
     {
@@ -31,10 +31,13 @@ const initialState = {
       _color: 'lightpink'
     }
   ],
-  events: [],
+  events: [
+    {}
+  ],
   info: {},
 
   // META
+  hoveredBook: -1,
   isDayLoading: false,
   infoDataType: infoDataTypes.BOOKS,
   err: {}
@@ -58,6 +61,16 @@ const app = (state = initialState, action) => {
         ...state,
         err: action.payload.err,
         isDayLoading: false
+      }
+    case appTypes.HOVER_BOOK:
+      return {
+        ...state,
+        hoveredBook: action.payload.book
+      }
+    case appTypes.ADD_NEW:
+      return {
+        ...state,
+        infoDataType: infoDataTypes.ADD_NEW
       }
     default:
       return state

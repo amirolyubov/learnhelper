@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import '../styles/info.scss'
 
 import * as infoDataTypes from '../constants/infoDataTypes.js'
-import { Books } from './info'
+import { Add, Books } from './info'
 
 class Info extends Component {
   renderByType() {
     const { data, actions } = this.props
     switch (data.infoDataType) {
       case infoDataTypes.BOOKS: return <Books data={data} actions={actions} />
+      case infoDataTypes.ADD_NEW: return <Add data={data} actions={actions} />
       default: break;
     }
   }

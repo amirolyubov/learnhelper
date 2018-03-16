@@ -9,7 +9,7 @@
   background-color: $color_header_bg;
   font-family: $font_numbers;
   margin: 15px 0 25px;
-  padding: 3px 30px;
+  padding: 3px 30px 3px 20px;
 
   span {
     font-size: 20px;
@@ -30,7 +30,7 @@
       cursor: pointer;
       width: 25px;
       height: 25px;
-      background-image: url('./icons/bars.svg');
+      background-image: $icon_bars;
       background-position: center;
       background-size: cover;
       margin-left: 30px;

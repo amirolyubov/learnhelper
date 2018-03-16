@@ -31,8 +31,8 @@ class Calendar extends Component {
         <rect
           key={key}
           width='100%'
-          height='2px'
-          y={`calc(80% - ${params.top})`}
+          height={params.hovered ? '4px' : '2px'}
+          y={`calc(80% - ${params.top} - ${params.hovered ? '1px' : '0px'})`}
           fill={params.color}
           ></rect>
       )
@@ -42,14 +42,14 @@ class Calendar extends Component {
           <circle
             cx='35%'
             cy={`calc(80% - ${params.top} + 1px)`}
-            r='3px'
+            r={params.hovered ? '4px' : '3px'}
             fill={params.color}
             />
           <rect
             width='65%'
-            height='2px'
+            height={params.hovered ? '4px' : '2px'}
             x='35%'
-            y={`calc(80% - ${params.top})`}
+            y={`calc(80% - ${params.top} - ${params.hovered ? '1px' : '0px'})`}
             fill={params.color}
             ></rect>
         </g>
@@ -60,13 +60,13 @@ class Calendar extends Component {
           <circle
             cx='65%'
             cy={`calc(80% - ${params.top} + 1px)`}
-            r='3px'
+            r={params.hovered ? '4px' : '3px'}
             fill={params.color}
             />
           <rect
             width='65%'
-            height='2px'
-            y={`calc(80% - ${params.top})`}
+            height={params.hovered ? '4px' : '2px'}
+            y={`calc(80% - ${params.top} - ${params.hovered ? '1px' : '0px'})`}
             fill={params.color}
             ></rect>
         </g>
@@ -75,16 +75,16 @@ class Calendar extends Component {
   }
 
   renderDayProcess(day) {
-    const { data: { books } } = this.props
+    const { data: { books, hoveredBook } } = this.props
     const { month } = this.state
 
     return (
       <svg width='100%' height='100%'>
         {
           books.map((book, key) => {
-            if (day == new Date(book.start).getDate()) return this.renderBookStatus('start', { top: book._top, color: book._color }, key)
-            if (day > new Date(book.start).getDate() && day < new Date(book.end).getDate()) return this.renderBookStatus('process', { top: book._top, color: book._color }, key)
-            if (day == new Date(book.end).getDate()) return this.renderBookStatus('end', { top: book._top, color: book._color }, key)
+            if (day == new Date(book.start).getDate()) return this.renderBookStatus('start', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
+            if (day > new Date(book.start).getDate() && day < new Date(book.end).getDate()) return this.renderBookStatus('process', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
+            if (day == new Date(book.end).getDate()) return this.renderBookStatus('end', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
           })
         }
       </svg>
@@ -123,7 +123,6 @@ class Calendar extends Component {
     ))
   }
   render() {
-    const {} = this.props
     return (
       <div className='calendar'>
         <div className='month'>
