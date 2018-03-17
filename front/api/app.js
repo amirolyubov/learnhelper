@@ -3,10 +3,9 @@ let BOOKS_MOCK = [
     title: 'Программирование в Clojure',
     author: 'Чаз, Эмерик',
     start: 1520351240000,
-    end: 1521992840000,
+    end: 1522692840000,
     holydays: false,
-    _top: 0,
-    _color: 'lightblue'
+    color: 'lightblue'
   },
   {
     title: 'Алгоритмы. Построение и анализ',
@@ -14,8 +13,7 @@ let BOOKS_MOCK = [
     start: 1520007954000,
     end: 1521831154000,
     holydays: true,
-    _top: 10,
-    _color: 'lightgreen'
+    color: 'lightgreen'
   },
   {
     title: 'Python',
@@ -23,8 +21,7 @@ let BOOKS_MOCK = [
     start: 1520231240000,
     end: 1521431154000,
     holydays: true,
-    _top: 20,
-    _color: 'lightpink'
+    color: 'lightpink'
   }
 ]
 

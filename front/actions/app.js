@@ -46,6 +46,10 @@ const getBooks_process = () => {
   }
 }
 const getBooks_success = data => {
+  data.forEach((book, key) => {
+    book._top = key * 10
+  })
+  console.log(data);
   return {
     type: appTypes.GET_BOOKS_SUCCESS,
     payload: { books: data }
@@ -71,7 +75,7 @@ export const hoverBook = book => {
   }
 }
 
-export const add = book => {
+export const add = () => {
   return {
     type: appTypes.ADD_NEW
   }
@@ -79,10 +83,18 @@ export const add = book => {
 
 export const saveBook = book => dispatch => {
   dispatch(saveBook_process())
+  const apiData = {
+    ...book,
+    start: Date.now(),
+    end: Date.now() + 1325240000
+  }
   appApi
-  .saveBook(book)
+  .saveBook(apiData)
   .then(
-    data => dispatch(saveBook_success(data)),
+    data => {
+      dispatch(saveBook_success(data))
+      dispatch(getBooks())
+    },
     err => dispatch(saveBook_failure(err))
   )
 }
@@ -107,5 +119,12 @@ const saveBook_failure = err => {
 export const confirmError = () => {
   return {
     type: appTypes.CONFIRM_ERROR
+  }
+}
+
+export const updateAddBookField = (field, value) => {
+  return {
+    type: appTypes.UPDATE_ADD_BOOK_FIELD,
+    payload: { field, value }
   }
 }

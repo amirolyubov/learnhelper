@@ -82,9 +82,9 @@ class Calendar extends Component {
       <svg width='100%' height='100%'>
         {
           books.map((book, key) => {
-            if (day == new Date(book.start).getDate()) return this.renderBookStatus('start', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
-            if (day > new Date(book.start).getDate() && day < new Date(book.end).getDate()) return this.renderBookStatus('process', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
-            if (day == new Date(book.end).getDate()) return this.renderBookStatus('end', { top: book._top, color: book._color, hovered: key == hoveredBook }, key)
+            if (day == new Date(book.start).getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (day > new Date(book.start).getDate() && day < new Date(book.end).getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (day == new Date(book.end).getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           })
         }
       </svg>

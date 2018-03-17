@@ -25,8 +25,8 @@ class Books extends Component {
   renderBookGraph(book) {
     return (
       <svg width='100%' height='10px'>
-        <rect width={`${timestamps2percents(book.start, book.end, Date.now(), 100)}%`} height='100%' fill={book._color}></rect>
-        <rect width='100%' height='100%' fill={book._color} opacity='0.5'></rect>
+        <rect width={`${timestamps2percents(book.start, book.end, Date.now(), 100)}%`} height='100%' fill={book.color}></rect>
+        <rect width='100%' height='100%' fill={book.color} opacity='0.5'></rect>
       </svg>
     )
   }

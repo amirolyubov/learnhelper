@@ -5,11 +5,11 @@ import { Color, ScrollContainer } from '../little'
 
 class Input extends Component {
   render() {
-    const {handleChange, title, value, half} = this.props
+    const {handleChange, title, value, half, name} = this.props
     return (
       <div className={cn('input', half && 'half')}>
         <div className='title'>{title}</div>
-        <input value={value} onChange={handleChange}/>
+        <input name={name} value={value} onChange={handleChange}/>
       </div>
     )
   }
@@ -26,16 +26,19 @@ class Add extends Component {
     super(props)
   }
 
-  handleInputChange() {
-
+  handleInputChange(e) {
+    const { actions: { updateAddBookField } } = this.props
+    e.source == 'hex'
+    ? updateAddBookField('color', e.hex)
+    : updateAddBookField(e.target.name, e.target.value)
   }
   handleAddClick() {
-    const { actions: { add }, data } = this.props
-    add(data)
+    const { actions: { saveBook }, data: { newBook } } = this.props
+    saveBook(newBook)
   }
 
   render() {
-    const { data } = this.props
+    const { data: { newBook } } = this.props
     return (
       <div>
         <h1>Добавить</h1>
@@ -44,24 +47,33 @@ class Add extends Component {
             <h2>Описание </h2>
             <Input
               title='название'
-              value=''
+              value={newBook.title}
+              name='title'
               handleChange={this.handleInputChange.bind(this)}
               />
             <Input
               title='автор'
-              value=''
+              value={newBook.author}
+              name='author'
               handleChange={this.handleInputChange.bind(this)}
               /> <br />
             <h2>Данные</h2>
             <Input
               title='страниц в день'
-              value=''
+              value={newBook.pages4day}
+              name='pages4day'
+              handleChange={this.handleInputChange.bind(this)}
               />
             <Input
               title='страниц всего'
-              value=''
+              value={newBook.pagesTotal}
+              name='pagesTotal'
+              handleChange={this.handleInputChange.bind(this)}
               />
-            <Color />
+            <Color
+              color={newBook.color}
+              onChange={this.handleInputChange.bind(this)}
+              />
             <Button
               title='создать'
               handleClick={this.handleAddClick.bind(this)}

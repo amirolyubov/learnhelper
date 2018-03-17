@@ -2,16 +2,20 @@ import * as appTypes from '../constants/appTypes.js'
 import * as infoDataTypes from '../constants/infoDataTypes.js'
 const initialState = {
   books: [],
-  events: [
-    {}
-  ],
-  info: {},
+  events: [],
+  newBook: {
+    title: '',
+    author: '',
+    pages4day: 0,
+    pagesTotal: 100,
+    color: '#fab165'
+  },
 
   // META
   hoveredBook: -1,
   isBooksLoading: true,
   isDayLoading: false,
-  infoDataType: infoDataTypes.ADD_NEW
+  infoDataType: infoDataTypes.BOOKS
 }
 
 const app = (state = initialState, action) => {
@@ -50,6 +54,17 @@ const app = (state = initialState, action) => {
         err: action.payload.err,
         isBooksLoading: false
       }
+    case appTypes.SAVE_BOOK_PROCESS:
+      return {
+        ...state,
+        isBookSaving: true
+      }
+    case appTypes.SAVE_BOOK_SUCCESS:
+      return {
+        ...state,
+        isBookSaving: false,
+        infoDataType: infoDataTypes.BOOKS
+      }
     case appTypes.HOVER_BOOK:
       return {
         ...state,
@@ -59,6 +74,14 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         infoDataType: infoDataTypes.ADD_NEW
+      }
+    case appTypes.UPDATE_ADD_BOOK_FIELD:
+      return {
+        ...state,
+        newBook: {
+          ...state.newBook,
+          [action.payload.field]: action.payload.value
+        }
       }
     default:
       return state
