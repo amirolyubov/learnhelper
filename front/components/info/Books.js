@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import cn from 'classnames'
 import { spliceString, timestamps2percents } from '../../utils/utils.js'
+import { Loader } from '../little'
 
 class Books extends Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    const {actions: { getBooks } } = this.props
+    getBooks()
   }
 
   handleBookHover(book) {
@@ -47,7 +54,7 @@ class Books extends Component {
       <div>
         <h1>Инфо</h1>
         <h2>Книги <div onClick={this.handleAddClick.bind(this)}></div></h2>
-        <div className='books'>{ data.books.map(this.renderBook.bind(this)) }</div>
+        <div className={cn('books', data.isBooksLoading && 'loading')}>{ data.isBooksLoading ? <Loader /> : data.books.map(this.renderBook.bind(this)) }</div>
         <h2>Статистика</h2>
       </div>
     )

@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
+import cn from 'classnames'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as appActions from '../actions/app.js'
-import { Calendar, Info, Header } from '../components'
+import { Calendar, Info, Header, Err } from '../components'
 
 class App extends Component {
   render() {
-    const { app, actions } = this.props
+    const { app, err, actions } = this.props
     return (
       <div className='app'>
         <div className='col-1'></div>
-        <div className='contentWrapper col-8'>
+        <div className={cn('contentWrapper', 'col-8', err.isError && 'hasError')}>
           <Header />
           <div className='content'>
             <Info
@@ -26,6 +27,7 @@ class App extends Component {
           </div>
         </div>
         <div className='col-1'></div>
+        { err.isError && <Err err={err.err} handleOk={actions.confirmError}/> }
       </div>
     )
   }
@@ -33,7 +35,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    app: state.app
+    app: state.app,
+    err: state.err
   }
 }
 const mapDispatchToProps = dispatch => {

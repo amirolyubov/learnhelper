@@ -23,6 +23,7 @@
     "mongoose": "^5.0.4",
     "react": "^16.2.0",
     "react-background-video-player": "^1.0.1",
+    "react-color": "^2.14.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

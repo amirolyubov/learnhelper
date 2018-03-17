@@ -18,6 +18,11 @@ html, body {
       display: flex;
       flex-direction: column;
 
+      &.hasError {
+        filter: blur(3px) opacity(0.4);
+        transition: 1s;
+      }
+
       .content {
         display: flex;
         flex-direction: row;

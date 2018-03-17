@@ -1,0 +1,64 @@
+@import "./variables.scss";
+
+@keyframes fade_top {
+  0% {
+    transform: translateY(-1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.errorWrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .box {
+    width: 30%;
+    background: white;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+    font-family: $font_numbers;
+    font-weight: 300;
+    animation-name: fade_top;
+    animation-duration: 0.5s;
+    animation-fill-mode: backwards;
+
+    h2 {
+      background: $color_err;
+      color: white;
+      padding: 20px;
+      font-size: 19px;
+      font-weight: 400;
+    }
+    p.status {
+      padding: 10px 20px 0;
+      font-size: 113px;
+    }
+    p.message {
+      padding: 0px 20px;
+      font-size: 14px;
+    }
+    div.button {
+      margin: 35px 20px 20px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ADD9F4;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.2s;
+
+      &:hover {
+        transform: translateX(-5px) translateY(-5px);
+        filter: brightness(0.97);
+        box-shadow: 7px 7px 5px rgba(0,0,0,0.1);
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ export const getDay = (day, month) => dispatch => {
   .getDay(day, month)
   .then(
     data => dispatch(getDay_success(data)),
-    err => dispatch(getDay_success(err))
+    err => dispatch(getDay_failure(err))
   )
 }
 const getDay_process = () => {
@@ -28,6 +28,36 @@ const getDay_failure = err => {
   }
 }
 
+export const getBooks = () => dispatch => {
+  dispatch(getBooks_process())
+  appApi
+  .getBooks()
+  .then(
+    data => dispatch(getBooks_success(data)),
+    err => {
+      dispatch(getBooks_failure(err))
+      dispatch(getBooks())
+    }
+  )
+}
+const getBooks_process = () => {
+  return {
+    type: appTypes.GET_BOOKS_PROCESS
+  }
+}
+const getBooks_success = data => {
+  return {
+    type: appTypes.GET_BOOKS_SUCCESS,
+    payload: { books: data }
+  }
+}
+const getBooks_failure = err => {
+  return {
+    type: appTypes.GET_BOOKS_FAILURE,
+    payload: { err }
+  }
+}
+
 export const deselectDay = () => {
   return {
     type: appTypes.DESELECT_DAY
@@ -41,8 +71,41 @@ export const hoverBook = book => {
   }
 }
 
-export const add = () => {
+export const add = book => {
   return {
     type: appTypes.ADD_NEW
+  }
+}
+
+export const saveBook = book => dispatch => {
+  dispatch(saveBook_process())
+  appApi
+  .saveBook(book)
+  .then(
+    data => dispatch(saveBook_success(data)),
+    err => dispatch(saveBook_failure(err))
+  )
+}
+const saveBook_process = () => {
+  return {
+    type: appTypes.SAVE_BOOK_PROCESS
+  }
+}
+const saveBook_success = data => {
+  return {
+    type: appTypes.SAVE_BOOK_SUCCESS,
+    payload: { book: data }
+  }
+}
+const saveBook_failure = err => {
+  return {
+    type: appTypes.SAVE_BOOK_FAILURE,
+    payload: { err }
+  }
+}
+
+export const confirmError = () => {
+  return {
+    type: appTypes.CONFIRM_ERROR
   }
 }

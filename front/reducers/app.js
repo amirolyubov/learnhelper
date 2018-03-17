@@ -1,36 +1,7 @@
 import * as appTypes from '../constants/appTypes.js'
 import * as infoDataTypes from '../constants/infoDataTypes.js'
 const initialState = {
-  books: [
-    {
-      title: 'Программирование в Clojure',
-      author: 'Чаз, Эмерик',
-      // start: 1521131154000,
-      start: 1520351240000,
-      end: 1521992840000,
-      holydays: false,
-      _top: 0,
-      _color: 'lightblue'
-    },
-    {
-      title: 'Алгоритмы. Построение и анализ',
-      author: 'Корман',
-      start: 1520007954000,
-      end: 1521831154000,
-      holydays: true,
-      _top: 10,
-      _color: 'lightgreen'
-    },
-    {
-      title: 'Python',
-      author: 'Лутз',
-      start: 1520231240000,
-      end: 1521431154000,
-      holydays: true,
-      _top: 20,
-      _color: 'lightpink'
-    }
-  ],
+  books: [],
   events: [
     {}
   ],
@@ -38,9 +9,9 @@ const initialState = {
 
   // META
   hoveredBook: -1,
+  isBooksLoading: true,
   isDayLoading: false,
-  infoDataType: infoDataTypes.BOOKS,
-  err: {}
+  infoDataType: infoDataTypes.ADD_NEW
 }
 
 const app = (state = initialState, action) => {
@@ -61,6 +32,23 @@ const app = (state = initialState, action) => {
         ...state,
         err: action.payload.err,
         isDayLoading: false
+      }
+    case appTypes.GET_BOOKS_PROCESS:
+      return {
+        ...state,
+        isBooksLoading: true
+      }
+    case appTypes.GET_BOOKS_SUCCESS:
+      return {
+        ...state,
+        books: action.payload.books,
+        isBooksLoading: false
+      }
+    case appTypes.GET_BOOKS_FAILURE:
+      return {
+        ...state,
+        err: action.payload.err,
+        isBooksLoading: false
       }
     case appTypes.HOVER_BOOK:
       return {
