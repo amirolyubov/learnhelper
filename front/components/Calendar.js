@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
 import '../styles/calendar.scss'
-import { renderDate } from '../utils/utils.js'
+import { generateTimeStampsMatrix } from '../utils/utils.js'
 
 class Calendar extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      monthMatrix: renderDate(true),
+      monthMatrix: generateTimeStampsMatrix(true),
       month: 2,
       selected: 0
     }
@@ -97,15 +97,15 @@ class Calendar extends Component {
         key={key}
         onClick={this.handleDayClick.bind(this, day)}
         className={cn(
-          day == null ? 'noday' : 'day',
+          isNaN(day) ? 'noday' : 'day',
           day == new Date().getDate() && 'today',
           day == selected && 'selected',
           (key == 5 || key == 6) && 'holyday'
         )}
         >
-        <span>{day}</span>
-        { day != null && this.renderDayProcess(day) }
-        { day != null
+        <span>{!isNaN(day) && day}</span>
+        { !isNaN(day) && this.renderDayProcess(day) }
+        { !isNaN(day)
           && (
             <div>
             </div>
@@ -118,7 +118,7 @@ class Calendar extends Component {
     const { monthMatrix } = this.state
     return monthMatrix.map((week, key) => (
       <div key={key} className='week'>
-        { week.map((day, dayKey) => this.renderDay(day, dayKey)) }
+        { week.map((day, dayKey) => this.renderDay(new Date(day).getDate(), dayKey)) }
       </div>
     ))
   }

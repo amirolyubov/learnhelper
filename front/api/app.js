@@ -24,6 +24,9 @@ let BOOKS_MOCK = [
     color: 'lightpink'
   }
 ]
+let DAY_MOCK = {
+  // date:
+}
 
 export const getDay = data => new Promise((resolve, reject) => {
   setTimeout(() => {
