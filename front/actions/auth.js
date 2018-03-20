@@ -36,7 +36,6 @@ export const signIn = user => dispatch => {
   )
 }
 const signIn_success = data => {
-  console.log(data)
   return {
     type: authTypes.SIGNIN_SUCCESS
   }

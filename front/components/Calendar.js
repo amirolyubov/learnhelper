@@ -91,13 +91,6 @@ class Calendar extends Component {
 
 
     const parseDate = (book, key) => {
-      const testLog  = (date) => {
-        book._id == 'id_142' && console.log(
-          new Date(book[date]).getDate(),
-          new Date(book[date]).getMonth(),
-          new Date(book[date]).getFullYear()
-        );
-      }
       if (new Date(book.start).getFullYear() < year) {
         if (new Date(book.end).getFullYear() > year) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
         if (new Date(book.end).getFullYear() == year) {
@@ -134,8 +127,6 @@ class Calendar extends Component {
         }
         if (new Date(book.start).getMonth() == month &&
             new Date(book.end).getMonth() == month) {
-          testLog('start')
-          testLog('end')
           if (new Date(book.start).getDate() < _current.getDate() &&
               new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)

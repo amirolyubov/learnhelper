@@ -49,7 +49,6 @@ const getBooks_success = data => {
   data.forEach((book, key) => {
     book._top = key * 10
   })
-  console.log(data);
   return {
     type: appTypes.GET_BOOKS_SUCCESS,
     payload: { books: data }
