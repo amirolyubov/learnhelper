@@ -8,10 +8,17 @@ class Calendar extends Component {
     super(props)
 
     this.state = {
-      monthMatrix: generateTimeStampsMatrix(true),
+      monthMatrix: [],
+      year: 2018,
       month: 2,
       selected: 0
     }
+  }
+
+  componentDidMount () {
+    this.setState({
+      monthMatrix: generateTimeStampsMatrix(true, this.state.month, this.state.year)
+    })
   }
 
   handleDayClick(day) {
@@ -76,16 +83,71 @@ class Calendar extends Component {
 
   renderDayProcess(day) {
     const { data: { books, hoveredBook } } = this.props
-    const { month } = this.state
+    const { month, year } = this.state
+    const _current = new Date(day)
+
+    // if (new Date(book.start).getFullYear() < _current.getFullYear() &&
+
+
+
+    const parseDate = (book, key) => {
+      const testLog  = (date) => {
+        book._id == 'id_142' && console.log(
+          new Date(book[date]).getDate(),
+          new Date(book[date]).getMonth(),
+          new Date(book[date]).getFullYear()
+        );
+      }
+      if (new Date(book.start).getFullYear() < year) {
+        if (new Date(book.end).getFullYear() > year) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+        if (new Date(book.end).getFullYear() == year) {
+          if (new Date(book.end).getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (new Date(book.end).getMonth() == month) {
+            if (new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          }
+        }
+      }
+      if (new Date(book.end).getFullYear() > year) {
+        if (new Date(book.start).getFullYear() == year) {
+          if (new Date(book.start).getMonth() < month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (new Date(book.start).getMonth() == month) {
+            if (new Date(book.start).getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          }
+        }
+      }
+      if (new Date(book.start).getFullYear() == year &&
+          new Date(book.end).getFullYear() == year) {
+        if (new Date(book.start).getMonth() < month) {
+          if (new Date(book.end).getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (new Date(book.end).getMonth() == month) {
+            if (new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          }
+        }
+        if (new Date(book.end).getMonth() > month) {
+          if (new Date(book.start).getMonth() == month) {
+            if (new Date(book.start).getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          }
+        }
+        if (new Date(book.start).getMonth() == month &&
+            new Date(book.end).getMonth() == month) {
+          testLog('start')
+          testLog('end')
+          if (new Date(book.start).getDate() < _current.getDate() &&
+              new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+        }
+      }
+    }
 
     return (
       <svg width='100%' height='100%'>
         {
-          books.map((book, key) => {
-            if (day == new Date(book.start).getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (day > new Date(book.start).getDate() && day < new Date(book.end).getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (day == new Date(book.end).getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          })
+          books.map((book, key) => parseDate(book, key))
         }
       </svg>
     )
@@ -95,17 +157,17 @@ class Calendar extends Component {
     return (
       <div
         key={key}
-        onClick={this.handleDayClick.bind(this, day)}
+        onClick={this.handleDayClick.bind(this, new Date(day).getDate())}
         className={cn(
-          isNaN(day) ? 'noday' : 'day',
-          day == new Date().getDate() && 'today',
-          day == selected && 'selected',
+          isNaN(new Date(day).getDate()) ? 'noday' : 'day',
+          new Date(day).getDate() == new Date().getDate() && 'today',
+          new Date(day).getDate() == selected && 'selected',
           (key == 5 || key == 6) && 'holyday'
         )}
         >
-        <span>{!isNaN(day) && day}</span>
-        { !isNaN(day) && this.renderDayProcess(day) }
-        { !isNaN(day)
+        <span>{!isNaN(new Date(day).getDate()) && new Date(day).getDate()}</span>
+        { !isNaN(new Date(day).getDate()) && this.renderDayProcess(new Date(day)) }
+        { !isNaN(new Date(day).getDate())
           && (
             <div>
             </div>
@@ -118,7 +180,7 @@ class Calendar extends Component {
     const { monthMatrix } = this.state
     return monthMatrix.map((week, key) => (
       <div key={key} className='week'>
-        { week.map((day, dayKey) => this.renderDay(new Date(day).getDate(), dayKey)) }
+        { week.map((day, dayKey) => this.renderDay(day, dayKey)) }
       </div>
     ))
   }

@@ -10,6 +10,9 @@ const initialState = {
     pagesTotal: 100,
     color: '#fab165'
   },
+  day: {
+
+  },
 
   // META
   hoveredBook: -1,
@@ -29,6 +32,7 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         day: action.payload.day,
+        infoDataType: infoDataTypes.DAY,
         isDayLoading: false
       }
     case appTypes.GET_DAY_FAILURE:
