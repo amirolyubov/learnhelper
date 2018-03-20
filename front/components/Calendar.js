@@ -81,14 +81,10 @@ class Calendar extends Component {
     }
   }
 
-  renderDayProcess(day) {
+  renderDayProcess(day, dayKey) {
     const { data: { books, hoveredBook } } = this.props
     const { month, year } = this.state
     const _current = new Date(day)
-
-    // if (new Date(book.start).getFullYear() < _current.getFullYear() &&
-
-
 
     const parseDate = (book, key) => {
       if (new Date(book.start).getFullYear() < year) {
@@ -138,7 +134,7 @@ class Calendar extends Component {
     return (
       <svg width='100%' height='100%'>
         {
-          books.map((book, key) => parseDate(book, key))
+          books.map((book, key) => !book.holydays ? (!(dayKey == 5 || dayKey == 6) && parseDate(book, key)) : parseDate(book, key))
         }
       </svg>
     )
@@ -156,8 +152,8 @@ class Calendar extends Component {
           (key == 5 || key == 6) && 'holyday'
         )}
         >
-        <span>{!isNaN(new Date(day).getDate()) && new Date(day).getDate()}</span>
-        { !isNaN(new Date(day).getDate()) && this.renderDayProcess(new Date(day)) }
+        <span>{ !isNaN(new Date(day).getDate()) && new Date(day).getDate() }</span>
+        { !isNaN(new Date(day).getDate()) && this.renderDayProcess(new Date(day), key) }
         { !isNaN(new Date(day).getDate())
           && (
             <div>

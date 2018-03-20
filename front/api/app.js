@@ -5,7 +5,7 @@ let BOOKS_MOCK = [
     author: 'Чаз, Эмерик',
     start: 1520231240000,
     end: 1521212840000,
-    holydays: false,
+    holydays: true,
     color: 'lightblue'
   },
   {
@@ -14,7 +14,7 @@ let BOOKS_MOCK = [
     author: 'Корман',
     start: 1520007954000,
     end: 1721831154000,
-    holydays: true,
+    holydays: false,
     color: 'lightgreen'
   },
   {
@@ -23,7 +23,7 @@ let BOOKS_MOCK = [
     author: 'Лутз',
     start: 1517231240000,
     end: 1520431154000,
-    holydays: true,
+    holydays: false,
     color: 'lightpink'
   }
 ]
