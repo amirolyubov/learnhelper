@@ -9,11 +9,13 @@ class Day extends Component {
 
   render() {
     const { data: { day } } = this.props
+    console.log(day)
     return (
       <div>
         <h1>{ date2beauty(new Date(day.date)) }</h1>
-        <h2>Книги</h2>
         <h2>Статистика</h2>
+        <h2>Чтение</h2>
+        <h2>События</h2>
       </div>
     )
   }

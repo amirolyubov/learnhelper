@@ -43,4 +43,4 @@ export const generateTimeStampsMatrix = (fromMonday, month = new Date().getMonth
   return matrix
 }
 
-export const date2beauty = date => `${['пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт', 'вск'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+export const date2beauty = date => `${['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`

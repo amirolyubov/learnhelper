@@ -25,9 +25,9 @@ class Calendar extends Component {
     const { actions: { getDay, deselectDay } } = this.props
     const { selected } = this.state
 
-    day != selected ? getDay() : deselectDay()
+    new Date(day).getDate() != selected ? getDay(day) : deselectDay()
     this.setState({
-      selected: day != selected ? day : 0
+      selected: new Date(day).getDate() != selected ? new Date(day).getDate() : 0
     })
   }
 
@@ -144,7 +144,7 @@ class Calendar extends Component {
     return (
       <div
         key={key}
-        onClick={this.handleDayClick.bind(this, new Date(day).getDate())}
+        onClick={this.handleDayClick.bind(this, day)}
         className={cn(
           isNaN(new Date(day).getDate()) ? 'noday' : 'day',
           new Date(day).getDate() == new Date().getDate() && 'today',

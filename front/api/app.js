@@ -49,12 +49,15 @@ let DAY_MOCK = {
   bisy: 70
 }
 
-export const getDay = data => new Promise((resolve, reject) => {
+export const getDay = day => new Promise((resolve, reject) => {
   setTimeout(() => {
     return Math.random() > 0.1
-    ? resolve(DAY_MOCK)
+    ? resolve({
+      ...DAY_MOCK,
+      date: day
+    })
     : reject(new Error('День не пришел с сервера'))
-  }, 700)
+  }, 300)
 })
 
 export const saveBook = book => new Promise((resolve, reject) => {
