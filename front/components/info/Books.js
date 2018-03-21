@@ -36,7 +36,20 @@ class Books extends Component {
       <div>
         <h1>Инфо</h1>
         <h2>Книги <div onClick={this.handleAddClick.bind(this)}></div></h2>
-        <div className={cn('books', data.isBooksLoading && 'loading')}>{ data.isBooksLoading ? <Loader /> : data.books.map((book, key) => <Book book={book} key={key} iter={key} handleHover={this.handleBookHover.bind(this)} renderMeta={this.renderBookGraph} />) }</div>
+        <div className={cn('books', data.isBooksLoading && 'loading')}>
+          { data.isBooksLoading
+            ? <Loader />
+            : data.books.map((book, key) => <Book
+                                            book={book}
+                                            key={key}
+                                            iter={key}
+                                            handleHover={this.handleBookHover.bind(this)}
+                                            meta={{
+                                              render: this.renderBookGraph,
+                                              class: 'info'
+                                            }} />)
+          }
+        </div>
         <h2>Статистика</h2>
       </div>
     )

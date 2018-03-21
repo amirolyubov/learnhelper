@@ -27,35 +27,34 @@ let BOOKS_MOCK = [
     color: 'lightpink'
   }
 ]
-let DAY_MOCK = {
-  date: Date.now(),
-  books: [
-    {
-      _id: 'id_142',
-      color: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].color,
-      title: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].title,
-      author: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].author,
-      pages: 25
-    },
-    {
-      _id: 'id_542',
-      color: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].color,
-      title: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].title,
-      author: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].author,
-      pages: 40
-    }
-  ],
-  events: [],
-  bisy: 70
+const generateDay = date => {
+  return {
+    date: date,
+    books: [
+      {
+        _id: 'id_142',
+        color: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].color,
+        title: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].title,
+        author: BOOKS_MOCK.filter(book => book._id == 'id_142')[0].author,
+        pages: Math.round(Math.random() * 80)
+      },
+      {
+        _id: 'id_542',
+        color: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].color,
+        title: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].title,
+        author: BOOKS_MOCK.filter(book => book._id == 'id_542')[0].author,
+        pages: Math.round(Math.random() * 80)
+      }
+    ],
+    events: [],
+    bisy: 70
+  }
 }
 
 export const getDay = day => new Promise((resolve, reject) => {
   setTimeout(() => {
     return Math.random() > 0.1
-    ? resolve({
-      ...DAY_MOCK,
-      date: day
-    })
+    ? resolve(generateDay(day))
     : reject(new Error('День не пришел с сервера'))
   }, 300)
 })

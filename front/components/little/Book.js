@@ -12,9 +12,13 @@ const Book = props => (
       <div>{ props.book.title.length > 25 ? spliceString(props.book.title, 25, '...') : props.book.title }</div>
       <div>{ props.book.author }</div>
     </div>
-    <div className='meta'>
-      {props.renderMeta && props.renderMeta(props.book)}
-    </div>
+    {
+      props.meta && (
+        <div className={props.meta.class}>
+          {props.meta.render(props.book)}
+        </div>
+      )
+    }
   </div>
 )
 

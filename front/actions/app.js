@@ -16,9 +16,18 @@ const getDay_process = () => {
   }
 }
 const getDay_success = data => {
+  let totalPages = 0
+  for (let book in data.books) {
+    totalPages += data.books[book].pages
+  }
+  let prepared_data = {
+    ...data,
+    totalPages,
+    totalTime: Math.round(totalPages * 1.5)
+  }
   return {
     type: appTypes.GET_DAY_SUCCESS,
-    payload: { day: data }
+    payload: { day: prepared_data }
   }
 }
 const getDay_failure = err => {
