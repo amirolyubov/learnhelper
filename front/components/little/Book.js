@@ -4,7 +4,6 @@ import { spliceString } from '../../utils/utils'
 
 const Book = props => (
   <div
-    key={props.iter}
     className='book'
     onMouseEnter={props.handleHover.bind(this, props.iter)}
     onMouseLeave={props.handleHover.bind(this, -1)}
