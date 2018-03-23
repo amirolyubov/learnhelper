@@ -21,7 +21,6 @@ class Day extends Component {
 
   render() {
     const { data: { day } } = this.props
-    console.log(day)
     return (
       <div className='day'>
         <h1>{ date2beauty(new Date(day.date)) }</h1>

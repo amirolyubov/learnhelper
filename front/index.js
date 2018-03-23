@@ -28,6 +28,7 @@ ReactDOM.render(
     <HashRouter>
       <div>
         <Route exact path='/' component={App} />
+        <Route path='/auth' component={Auth} />
         {/*<Route path='/:grantId/:bidId' component={Bid} />
         <Route path='/:grantId' component={Grant} />
         <Route path='/profile' component={User} />*/}

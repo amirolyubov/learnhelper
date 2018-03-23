@@ -1,21 +1,28 @@
 const express = require('express')
 const app = express()
+const session = require('express-session')
 const bodyParser = require('body-parser')
-const session = require('express-session');
 const MongoStore = require('connect-mongo')(session)
+const db = require('./server/db/db.js')
 
 require('./server/routes/routes.js')(app, bodyParser.json())
 
-const db = require('./server/db/db.js')
 db.init()
 
-app.use(express.static('dist'))
 app.use(session({
-  secret: 'secret secret 123123',
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: require('mongoose').connection })
-}))
+    secret: 'vdfsdgjsfosbnvslkbnvsklrbnsokbnvslvnpi',
+    name: 'session',
+    proxy: true,
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({
+      url: 'mongodb://localhost/calendardb',
+      ttl: 30,
+      autoRemove: 'interval',
+      autoRemoveInterval: 1
+    })
+}));
+app.use(express.static('dist'))
 
 app.get('/', (req, res) => res.sendfile(__dirname + '/dist/index.html'))
 
