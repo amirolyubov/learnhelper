@@ -4,7 +4,7 @@ export const signUp = user => new Promise((resolve, reject) => {
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-      resolve(xhr.responseText)
+      resolve(JSON.parse(xhr.responseText))
     }
   }
   xhr.send(JSON.stringify(user))
@@ -13,6 +13,18 @@ export const signUp = user => new Promise((resolve, reject) => {
 export const signIn = user => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest()
   xhr.open('POST', '/api/signin', true)
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+      resolve(xhr.responseText)
+    }
+  }
+  xhr.send(JSON.stringify(user))
+})
+
+export const signOut = user => new Promise((resolve, reject) => {
+  let xhr = new XMLHttpRequest()
+  xhr.open('POST', '/api/signout', true)
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {

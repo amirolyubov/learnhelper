@@ -1,6 +1,7 @@
 import * as authTypes from '../constants/authTypes'
 
 const initialState = {
+  isAuth: false,
   username: '',
   email: '',
   password: '',

@@ -40,3 +40,16 @@ const signIn_success = data => {
     type: authTypes.SIGNIN_SUCCESS
   }
 }
+
+export const signOut = () => dispatch => {
+  authApi
+  .signOut()
+  .then(
+    data => dispatch(signOut_success(data))
+  )
+}
+const signOut_success = () => {
+  return {
+    type: authTypes.SIGNOUT_SUCCESS
+  }
+}

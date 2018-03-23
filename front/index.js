@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { HashRouter } from 'react-router-dom'
+import { HashRouter, Redirect } from 'react-router-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
@@ -22,16 +22,21 @@ const store = createStore(combineReducers({
   router: routerReducer
 }), applyMiddleware(thunk, routerMW))
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    false
+      ? <Component {...props} />
+      : <Redirect to='/auth' />
+  )} />
+)
+
 ReactDOM.render(
 <Provider store={store}>
   <ConnectedRouter history={history}>
     <HashRouter>
       <div>
-        <Route exact path='/' component={App} />
+        <PrivateRoute exact path='/' component={App} />
         <Route path='/auth' component={Auth} />
-        {/*<Route path='/:grantId/:bidId' component={Bid} />
-        <Route path='/:grantId' component={Grant} />
-        <Route path='/profile' component={User} />*/}
       </div>
     </HashRouter>
   </ConnectedRouter>

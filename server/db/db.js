@@ -3,7 +3,6 @@ const user = require('./user');
 
 const initDb = () => {
   mongoose.connect('mongodb://localhost/calendardb')
-  .then(() => console.log('MongoDB is started'))
   .catch(err => console.log('ERROR: ' + err))
 }
 
