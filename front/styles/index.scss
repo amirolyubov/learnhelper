@@ -7,12 +7,17 @@
 html, body {
   overflow-x: hidden;
 
+  div.loader-max {
+    margin: 30% 50%;
+  }
+
   .app {
     position: absolute;
     padding-bottom: 40px;
     width: 100%;
     height: calc(100% - 40px);
     display: flex;
+
 
     .contentWrapper {
       display: flex;

@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 @keyframes loader {
   0% {
     transform: rotate(0deg);
@@ -38,7 +40,7 @@
   width: 30px;
   height: 30px;
   position: relative;
-  border: 4px solid #Fff;
+  border: 4px solid #fff;
   animation: loader 2s infinite ease;
 
   .little_loader-inner {
@@ -47,5 +49,13 @@
     width: 100%;
     background-color: #fff;
     animation: loader-inner 2s infinite ease-in;
+  }
+  &.blue {
+    &.little_loader {
+      border: 4px solid $color_header_bg;
+      .little_loader-inner {
+        background-color: $color_header_bg;
+      }
+    }
   }
 }

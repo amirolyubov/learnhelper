@@ -22,6 +22,10 @@ class Auth extends Component {
     const { actions: {signOut} } = this.props
     signOut()
   }
+  handleGetUsersClick () {
+    const { actions: { checkSession } } = this.props
+    checkSession()
+  }
   render() {
     const { auth: { username, email, password, logEmail, logPassword } } = this.props
     return (
@@ -40,7 +44,6 @@ class Auth extends Component {
         <p>password</p>
         <input name='logPassword' onChange={this.handleInputChange.bind(this)} value={logPassword}></input>
         <button onClick={this.handleSigninClick.bind(this)}>sign in</button>
-        <hr />
         <hr />
         <button onClick={this.handleSignoutClick.bind(this)}>SIGN OUT</button>
       </div>

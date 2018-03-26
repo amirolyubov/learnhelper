@@ -5,16 +5,17 @@ import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as appActions from '../actions/app.js'
+import * as authActions from '../actions/auth.js'
 import { Calendar, Info, Header, Err } from '../components'
 
 class App extends Component {
   render() {
-    const { app, err, actions } = this.props
+    const { app, err, actions, authActions } = this.props
     return (
       <div className='app'>
         <div className='col-1'></div>
         <div className={cn('contentWrapper', 'col-8', err.isError && 'hasError')}>
-          <Header />
+          <Header handleSignout={authActions.signOut}/>
           <div className='content'>
             <Info
               data={app}
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators(appActions, dispatch)
+    actions: bindActionCreators(appActions, dispatch),
+    authActions: bindActionCreators(authActions, dispatch)
   }
 }
 

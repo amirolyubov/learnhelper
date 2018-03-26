@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import '../styles/header.scss'
 
 class Header extends Component {
+  handleSignoutClick() {
+    const { handleSignout } = this.props
+    handleSignout()
+  }
   render() {
     const {} = this.props
     return (
@@ -13,7 +17,7 @@ class Header extends Component {
             <div className='menu'>
               <span>help</span>
               <span>Settings</span>
-              <span>Sign out</span>
+              <span onClick={this.handleSignoutClick.bind(this)}>Sign out</span>
             </div>
           </div>
         </div>

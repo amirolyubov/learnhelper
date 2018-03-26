@@ -10,11 +10,9 @@ import { Route } from 'react-router'
 
 import reducers from './reducers'
 
-import { App, Auth } from './containers'
+import { Root } from './containers'
 
-import './styles/index.scss'
-
-const history = createHistory()
+export const history = createHistory()
 const routerMW = routerMiddleware(history)
 
 const store = createStore(combineReducers({
@@ -22,23 +20,10 @@ const store = createStore(combineReducers({
   router: routerReducer
 }), applyMiddleware(thunk, routerMW))
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    false
-      ? <Component {...props} />
-      : <Redirect to='/auth' />
-  )} />
-)
-
 ReactDOM.render(
 <Provider store={store}>
   <ConnectedRouter history={history}>
-    <HashRouter>
-      <div>
-        <PrivateRoute exact path='/' component={App} />
-        <Route path='/auth' component={Auth} />
-      </div>
-    </HashRouter>
+    <Root />
   </ConnectedRouter>
 </Provider>,
 document.getElementById('app'))

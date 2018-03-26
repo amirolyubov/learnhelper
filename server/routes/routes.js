@@ -19,15 +19,25 @@ module.exports = (app, middleware) => {
         res.send(err)
       } else {
         req.session.user = {id: user._id, name: user.name}
-        res.send('success');
+        res.send({email: user.email});
       }
     })
   })
   app.post('/api/signout', middleware, (req, res) => {
     if (req.session.user) {
-      console.log(req.session);
       delete req.session.user
       res.send(200)
+    } else {
+      res.send(200)
+    }
+  })
+
+  app.get('/api/session', middleware, (req, res) => {
+    if (req.session.user) {
+      // db.user.get
+      res.send(200)
+    } else {
+      res.send(401)
     }
   })
 }

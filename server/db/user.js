@@ -36,7 +36,6 @@ UserSchema.statics.signup = (params, cb) => {
       }
     })
   })
-
 }
 UserSchema.statics.signin = (params, cb) => {
   User.find({email: params.email}, (err, user) => {
@@ -53,6 +52,9 @@ UserSchema.statics.signin = (params, cb) => {
     }
   })
 }
+// UserSchema.statics.getOne = (params, cb) => {
+//   User.findById(params)
+// }
 
 let User = mongoose.model('User', UserSchema)
 

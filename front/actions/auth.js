@@ -1,5 +1,6 @@
 import * as authTypes from '../constants/authTypes'
 import * as authApi from '../api/auth'
+import { history } from '../index'
 
 export const updateField = (key, value) => {
   return {
@@ -32,7 +33,10 @@ export const signIn = user => dispatch => {
     password: user.logPassword
   })
   .then(
-    data => dispatch(signIn_success(data))
+    data => {
+      dispatch(signIn_success(data))
+      dispatch(redirectToApp())
+    }
   )
 }
 const signIn_success = data => {
@@ -51,5 +55,37 @@ export const signOut = () => dispatch => {
 const signOut_success = () => {
   return {
     type: authTypes.SIGNOUT_SUCCESS
+  }
+}
+
+export const checkSession = () => dispatch => {
+  dispatch(checkSession_process())
+  authApi
+  .checkSession()
+  .then(
+    data => {
+      dispatch(checkSession_success(data))
+      dispatch(redirectToApp())
+    },
+    err => {
+      dispatch(checkSession_failure(err))
+    }
+  )
+}
+const redirectToApp = () => {
+  history.push('/')
+  return { type: 'redirect' }
+}
+const checkSession_process = () => {
+  return { type: authTypes.CHECK_SESSION_PROCESS }
+}
+const checkSession_success = data => {
+  return {
+    type: authTypes.CHECK_SESSION_SUCCESS
+  }
+}
+const checkSession_failure = err => {
+  return {
+    type: authTypes.CHECK_SESSION_FAILURE
   }
 }

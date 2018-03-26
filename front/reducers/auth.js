@@ -6,7 +6,9 @@ const initialState = {
   email: '',
   password: '',
   logEmail: '',
-  logPassword: ''
+  logPassword: '',
+  isAuthentificate: false,
+  isLoading: true
 }
 
 const auth = (state = initialState, action) => {
@@ -15,6 +17,33 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         [action.payload.key]: action.payload.value
+      }
+    case authTypes.SIGNIN_SUCCESS:
+      return {
+        ...state,
+        isAuthentificate: true
+      }
+    case authTypes.CHECK_SESSION_SUCCESS:
+      return {
+        ...state,
+        isAuthentificate: true,
+        isLoading: false
+      }
+    case authTypes.CHECK_SESSION_FAILURE:
+      return {
+        ...state,
+        isAuthentificate: false,
+        isLoading: false
+      }
+    case authTypes.CHECK_SESSION_PROCESS:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case authTypes.SIGNOUT_SUCCESS:
+      return {
+        ...state,
+        isAuthentificate: false
       }
     default:
       return state
