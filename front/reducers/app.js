@@ -7,7 +7,7 @@ const initialState = {
     title: '',
     author: '',
     pages4day: 0,
-    pagesTotal: 100,
+    pages: 100,
     color: '#fab165'
   },
   day: {

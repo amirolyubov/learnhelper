@@ -16,6 +16,7 @@ const getDay_process = () => {
   }
 }
 const getDay_success = data => {
+  data.date = new Number(data.date)
   let totalPages = 0
   for (let book in data.books) {
     totalPages += data.books[book].pages

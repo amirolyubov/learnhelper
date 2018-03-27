@@ -52,11 +52,12 @@ const generateDay = date => {
 }
 
 export const getDay = day => new Promise((resolve, reject) => {
-  setTimeout(() => {
-    return Math.random() > 0.1
-    ? resolve(generateDay(day))
-    : reject(new Error('День не пришел с сервера'))
-  }, 300)
+  let xhr = new XMLHttpRequest()
+  xhr.open('GET', `/api/books?date=${day.getTime()}`, true)
+  xhr.onreadystatechange = () => {
+    xhr.status == 200 && resolve(JSON.parse(xhr.responseText))
+  }
+  xhr.send()
 })
 
 export const saveBook = book => new Promise((resolve, reject) => {

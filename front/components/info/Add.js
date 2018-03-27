@@ -66,8 +66,8 @@ class Add extends Component {
               />
             <Input
               title='страниц всего'
-              value={newBook.pagesTotal}
-              name='pagesTotal'
+              value={newBook.pages}
+              name='pages'
               handleChange={this.handleInputChange.bind(this)}
               />
             <Color

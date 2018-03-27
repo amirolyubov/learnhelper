@@ -49,8 +49,17 @@ module.exports = (app, middleware) => {
     })
   })
   app.get('/api/books', middleware, (req, res) => {
-    db.book.get({user: req.session.user.id}, (err, books) => {
-      res.send(books) // TODO: error handling
+    db.book.get({user: req.session.user.id, date: req.query.date || null}, (err, books) => {
+      if (req.query && req.query.date) {
+        res.send({
+          date: req.query.date,
+          books: books,
+          events: [],
+          bisy: 70
+        })
+      } else {
+        res.send(books) // TODO: error handling
+      }
     })
   })
 }
