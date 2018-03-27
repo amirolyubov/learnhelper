@@ -14,7 +14,7 @@ const config = {
   context: path.resolve(__dirname, 'front'),
   output: {
     filename: './js/[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'public_html')
   },
 
   module: {
