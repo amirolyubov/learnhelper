@@ -39,7 +39,7 @@ export const checkSession = () => new Promise((resolve, reject) => {
   xhr.open('GET', '/api/session', true)
   xhr.onreadystatechange = () => {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-      resolve(xhr.responseText)
+      resolve(JSON.parse(xhr.responseText))
     }
     if (xhr.status == 401) {
       reject(401)

@@ -56,12 +56,12 @@ const getBooks_process = () => {
   }
 }
 const getBooks_success = data => {
-  data.forEach((book, key) => {
+  data.books.forEach((book, key) => {
     book._top = key * 10
   })
   return {
     type: appTypes.GET_BOOKS_SUCCESS,
-    payload: { books: data }
+    payload: { books: data.books }
   }
 }
 const getBooks_failure = err => {

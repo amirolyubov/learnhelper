@@ -23,6 +23,7 @@ let BookSchema = new mongoose.Schema({
 
 const setTimeIn0 = date => new Date(new Date(new Date(date.setHours(0)).setMinutes(0)).setSeconds(0)).setMilliseconds(0)
 const getDaysDiff = data => Math.round((data.end.getTime() - data.start.getTime()) / (1000 * 60 * 60 * 24))
+
 BookSchema.statics.add = (params, cb) => {
   Book.create(params, (err, book) => {
     if (err) cb(err)

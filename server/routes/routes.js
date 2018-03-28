@@ -32,8 +32,7 @@ module.exports = (app, middleware) => {
   })
   app.get('/api/session', middleware, (req, res) => {
     if (req.session.user) {
-      // db.user.get
-      res.send(200)
+      db.user.findById(req.session.user.id, (err, user) => res.send({_id: user._id, email: user.email}))
     } else {
       res.send(401)
     }
@@ -58,7 +57,7 @@ module.exports = (app, middleware) => {
           bisy: 70
         })
       } else {
-        res.send(books) // TODO: error handling
+        res.send({books: books}) // TODO: error handling
       }
     })
   })
