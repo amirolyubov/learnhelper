@@ -16,7 +16,7 @@ export const signIn = user => new Promise((resolve, reject) => {
   xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-      resolve(xhr.responseText)
+      resolve(JSON.parse(xhr.responseText))
     }
   }
   xhr.send(JSON.stringify(user))

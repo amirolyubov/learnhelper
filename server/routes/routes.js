@@ -18,7 +18,7 @@ module.exports = (app, middleware) => {
         res.send(err)
       } else {
         req.session.user = {id: user._id, name: user.name}
-        res.send({email: user.email});
+        res.send({_id: user._id, email: user.email});
       }
     })
   })

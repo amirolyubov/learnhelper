@@ -14,18 +14,67 @@
     display: flex;
     flex-direction: column;
 
-    .weekDays {
-      display: flex;
-      padding: 20px 0px;
-      margin-bottom: 10px;
-      background: $color_week_legend;
-      div {
-        width: 20%;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: $font_numbers;
+    .controlsWrapper {
+      .controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        background: $color_week_legend;
+
+        .controlButton {
+          cursor: pointer;
+          padding: 3px 5px;
+          margin: 0 7px;
+          filter: brightness(0.96);
+          transition: 0.2s;
+
+          &.left:hover {
+            transform: translateX(-5px);
+          }
+          &.right:hover {
+            transform: translateX(5px);
+          }
+          &.switcher {
+            cursor: default;
+            display: flex;
+            padding: 0;
+            div {
+              background: white;
+              width: 50px;
+              padding: 5px;
+              text-align: center;
+              cursor: pointer;
+              transition: 0.2s;
+              &:hover {
+                filter: brightness(0.94);
+                transform: translate(-2px, -2px);
+                box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+              }
+              &.active {
+                filter: brightness(0.92);
+                transform: translate(-4px, -4px);
+                box-shadow: 4px 4px 2px rgba(0,0,0,0.1);
+              }
+            }
+          }
+        }
+      }
+      .weekDays {
+        display: flex;
+        padding: 20px 0px;
+        background: $color_calendar_num;
+        color: white;
+        div {
+          width: 20%;
+          text-align: center;
+          text-transform: uppercase;
+          font-family: $font_numbers;
+        }
       }
     }
+
     .week {
       display: flex;
       flex-grow: 1;
@@ -53,7 +102,7 @@
           }
           &:hover {
             transition: 0.2s;
-            transform: translateX(-4px) translateY(-4px) scale(1.05);
+            transform: translate(-4px, -4px) scale(1.05);
             box-shadow: 4px 4px 5px $color_holyday;
             filter: brightness(0.98);
           }

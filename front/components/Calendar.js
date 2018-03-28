@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cn from 'classnames'
 import '../styles/calendar.scss'
 import { generateTimeStampsMatrix } from '../utils/utils.js'
+import * as views from '../constants/calendarViewTypes'
 
 class Calendar extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class Calendar extends Component {
       monthMatrix: [],
       year: 2018,
       month: 2,
-      selected: 0
+      selected: 0,
+      view: views.MONTH
     }
   }
 
@@ -29,6 +31,9 @@ class Calendar extends Component {
     this.setState({
       selected: new Date(day).getDate() != selected ? new Date(day).getDate() : 0
     })
+  }
+  handleSwitcherClick(type) {
+    this.setState({view: type})
   }
 
 
@@ -144,7 +149,7 @@ class Calendar extends Component {
     return (
       <div
         key={key}
-        onClick={this.handleDayClick.bind(this, day)}
+        onClick={new Date(day).getDate() ? this.handleDayClick.bind(this, day) : null}
         className={cn(
           isNaN(new Date(day).getDate()) ? 'noday' : 'day',
           new Date(day).getDate() == new Date().getDate() && 'today',
@@ -171,13 +176,29 @@ class Calendar extends Component {
       </div>
     ))
   }
+  renderCalendarCtrls() {
+    const { view } = this.state
+    return (
+      <div className='controlsWrapper'>
+        <div className='weekDays'>
+          { ['Пнд', 'Втр', 'Срд', 'Чтв', 'Птн', 'Суб', 'Вск'].map((day, key) => (<div key={key}>{day}</div>)) }
+        </div>
+        <div className='controls'>
+          <div className='controlButton left'>{'<'}</div>
+          <div className='controlButton switcher'>
+            <div onClick={this.handleSwitcherClick.bind(this, views.MONTH)} className={cn('', view == views.MONTH && 'active')}>month</div>
+            <div onClick={this.handleSwitcherClick.bind(this, views.YEAR)} className={cn('', view == views.YEAR && 'active')}>year</div>
+          </div>
+          <div className='controlButton right'>{'>'}</div>
+        </div>
+      </div>
+    )
+  }
   render() {
     return (
       <div className='calendar'>
         <div className='month'>
-          <div className='weekDays'>
-            { ['Пнд', 'Втр', 'Срд', 'Чтв', 'Птн', 'Суб', 'Вск'].map((day, key) => (<div key={key}>{day}</div>)) }
-          </div>
+          {this.renderCalendarCtrls()}
           {this.renderMonth()}
         </div>
       </div>

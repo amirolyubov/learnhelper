@@ -25,7 +25,8 @@ const auth = (state = initialState, action) => {
     case authTypes.SIGNIN_SUCCESS:
       return {
         ...state,
-        isAuthentificate: true
+        isAuthentificate: true,
+        user: action.payload.user
       }
     case authTypes.CHECK_SESSION_SUCCESS:
       return {
