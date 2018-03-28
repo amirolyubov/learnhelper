@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
-import { generateTimeStampsMatrix } from '../../utils/utils.js'
+import { generateMonthTimeStampsMatrix } from '../../utils'
 
 class Month extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Month extends Component {
   }
   componentDidMount () {
     this.setState({
-      monthMatrix: generateTimeStampsMatrix(true, this.state.month, this.state.year)
+      monthMatrix: generateMonthTimeStampsMatrix(true, this.state.month, this.state.year)
     })
   }
 

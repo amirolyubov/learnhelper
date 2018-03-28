@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
 
+import { generateYearTimestampsMatrix } from '../../utils'
+
 class Year extends Component {
   constructor(props) {
     super(props)
@@ -8,6 +10,10 @@ class Year extends Component {
     this.state = {
 
     }
+  }
+
+  componentDidMount() {
+
   }
 
   render() {

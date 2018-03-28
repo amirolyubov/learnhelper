@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
-import { date2beauty } from '../../utils/utils'
+import { date2beauty } from '../../utils'
 import { Book } from '../little'
 import '../../styles/day.scss'
 

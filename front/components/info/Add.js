@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
-import { spliceString, timestamps2percents } from '../../utils/utils.js'
+import { spliceString, timestamps2percents } from '../../utils'
 import { Color, ScrollContainer } from '../little'
 
 class Input extends Component {

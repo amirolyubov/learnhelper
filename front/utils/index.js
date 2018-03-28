@@ -12,7 +12,7 @@ export const timestamps2percents = (start, end, now, max) => {
   return Number(current.toString().substring(0,3)) >= 100 ? 100 : Number(current.toString().substring(4,6))
 }
 
-export const generateTimeStampsMatrix = (fromMonday, month = new Date().getMonth(), year = new Date().getFullYear()) => {
+export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().getMonth(), year = new Date().getFullYear()) => {
   let matrix = [],
       today = new Date(),
       nextDay = new Date(new Date(new Date(today).setDate(1)).setMonth(month)).setYear(year)

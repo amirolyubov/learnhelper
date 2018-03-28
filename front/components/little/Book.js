@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../../styles/little/book.scss'
-import { spliceString } from '../../utils/utils'
+import { spliceString } from '../../utils'
 
 const Book = props => (
   <div
