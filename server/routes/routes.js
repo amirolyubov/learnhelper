@@ -48,8 +48,8 @@ module.exports = (app, middleware) => {
     })
   })
   app.get('/api/books', middleware, (req, res) => {
-    db.book.get({user: req.session.user.id, date: req.query.date || null}, (err, books) => {
-      if (req.query && req.query.date) {
+    db.book.get({user: req.session.user.id, query: req.query}, (err, books) => {
+      if (req.query !== {}) {
         res.send({
           date: req.query.date,
           books: books,
@@ -57,6 +57,7 @@ module.exports = (app, middleware) => {
           bisy: 70
         })
       } else {
+        console.log(321);
         res.send({books: books}) // TODO: error handling
       }
     })

@@ -1,10 +1,13 @@
 import * as appTypes from '../constants/appTypes.js'
 import * as appApi from '../api/app.js'
 
-export const getDay = (day, month) => dispatch => {
+export const getDay = (date) => dispatch => {
   dispatch(getDay_process())
   appApi
-  .getDay(day, month)
+  .getBooks({
+    type: 'day',
+    date: date
+  })
   .then(
     data => dispatch(getDay_success(data)),
     err => dispatch(getDay_failure(err))
