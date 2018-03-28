@@ -7,12 +7,12 @@ class Header extends Component {
     handleSignout()
   }
   render() {
-    const {} = this.props
+    const {user} = this.props
     return (
       <div className='header'>
         <span>ЛЁРНХЕЛПЕР</span>
         <div className='controls'>
-          <span>amirolyubov</span>
+          <span>{ user.email }</span>
           <div className='menuButton'>
             <div className='menu'>
               <span>help</span>

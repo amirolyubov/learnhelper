@@ -1,7 +1,7 @@
 export const getDay = day => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest()
   xhr.open('GET', `/api/books?date=${day.getTime()}`, true)
-  xhr.setRequestHeader("Content-type", "text/html; charset=utf-8")
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     xhr.status == 200 && resolve(JSON.parse(xhr.responseText))
   }
@@ -11,7 +11,7 @@ export const getDay = day => new Promise((resolve, reject) => {
 export const saveBook = book => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest()
   xhr.open('POST', '/api/books', true)
-  xhr.setRequestHeader("Content-type", "text/html; charset=utf-8")
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     if (xhr.status == 200) {
       resolve(xhr.responseText)
@@ -23,7 +23,7 @@ export const saveBook = book => new Promise((resolve, reject) => {
 export const getBooks = () => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest()
   xhr.open('GET', '/api/books', true)
-  xhr.setRequestHeader("Content-type", "text/html; charset=utf-8")
+  xhr.setRequestHeader("Content-type", "application/json; charset=utf-8")
   xhr.onreadystatechange = () => {
     xhr.status == 200 && resolve(JSON.parse(xhr.responseText))
   }

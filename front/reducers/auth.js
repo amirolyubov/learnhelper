@@ -8,7 +8,11 @@ const initialState = {
   logEmail: '',
   logPassword: '',
   isAuthentificate: false,
-  isLoading: true
+  isLoading: true,
+  user: {
+    id: '',
+    email: ''
+  }
 }
 
 const auth = (state = initialState, action) => {
@@ -27,7 +31,8 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         isAuthentificate: true,
-        isLoading: false
+        isLoading: false,
+        user: action.payload.user
       }
     case authTypes.CHECK_SESSION_FAILURE:
       return {
@@ -43,7 +48,11 @@ const auth = (state = initialState, action) => {
     case authTypes.SIGNOUT_SUCCESS:
       return {
         ...state,
-        isAuthentificate: false
+        isAuthentificate: false,
+        user: {
+          email: '',
+          id: ''
+        }
       }
     default:
       return state

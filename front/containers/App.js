@@ -10,12 +10,12 @@ import { Calendar, Info, Header, Err } from '../components'
 
 class App extends Component {
   render() {
-    const { app, err, actions, authActions } = this.props
+    const { app, err, user, actions, authActions } = this.props
     return (
       <div className='app'>
         <div className='col-1'></div>
         <div className={cn('contentWrapper', 'col-8', err.isError && 'hasError')}>
-          <Header handleSignout={authActions.signOut}/>
+          <Header handleSignout={authActions.signOut} user={user}/>
           <div className='content'>
             <Info
               data={app}
@@ -37,7 +37,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     app: state.app,
-    err: state.err
+    err: state.err,
+    user: state.auth.user
   }
 }
 const mapDispatchToProps = dispatch => {

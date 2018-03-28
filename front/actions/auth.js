@@ -80,9 +80,11 @@ const checkSession_process = () => {
   return { type: authTypes.CHECK_SESSION_PROCESS }
 }
 const checkSession_success = data => {
-  console.log(data)
   return {
-    type: authTypes.CHECK_SESSION_SUCCESS
+    type: authTypes.CHECK_SESSION_SUCCESS,
+    payload: {
+      user: data
+    }
   }
 }
 const checkSession_failure = err => {
