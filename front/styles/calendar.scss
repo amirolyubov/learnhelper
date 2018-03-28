@@ -33,6 +33,7 @@
           font-family: $font_numbers;
           font-size: 23px;
           font-weight: 100;
+          user-select: none;
 
           &.left:hover {
             transform: translateX(-3px);
