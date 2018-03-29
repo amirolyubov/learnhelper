@@ -10,7 +10,7 @@ class Calendar extends Component {
     super(props)
     this.state = {
       year: 2018,
-      month: 2,
+      month: 0,
       view: views.YEAR
     }
   }
@@ -19,12 +19,14 @@ class Calendar extends Component {
     this.setState({view: type})
   }
   handleNavClick(type) {
-    const { year, month } = this.state
-    if (type === 'NEXT') {
-
-    } else if (type === 'PREV') {
-
-    }
+    // const { year, month } = this.state
+    // if (type === 'NEXT') {
+    //   this.setState({
+    //     month: this.state.month === 11 ? 0 : this.state.month + 1
+    //   })
+    // } else if (type === 'PREV') {
+    //
+    // }
   }
 
   renderCalendarCtrls() {

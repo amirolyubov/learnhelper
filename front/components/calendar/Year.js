@@ -53,6 +53,7 @@ class Year extends Component {
 
   render() {
     const { yearMatrix } = this.state
+    console.log(this.props);
     return (
       <div className='year'>
         { yearMatrix.map((month, key) => <Month key={key} month={month} />) }
