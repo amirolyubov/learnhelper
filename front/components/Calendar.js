@@ -9,16 +9,22 @@ class Calendar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      monthMatrix: [],
       year: 2018,
       month: 2,
-      selected: 0,
-      view: views.MONTH
+      view: views.YEAR
     }
   }
 
   handleSwitcherClick(type) {
     this.setState({view: type})
+  }
+  handleNavClick(type) {
+    const { year, month } = this.state
+    if (type === 'NEXT') {
+
+    } else if (type === 'PREV') {
+
+    }
   }
 
   renderCalendarCtrls() {
@@ -29,25 +35,25 @@ class Calendar extends Component {
           { ['Пнд', 'Втр', 'Срд', 'Чтв', 'Птн', 'Суб', 'Вск'].map((day, key) => (<div key={key}>{day}</div>)) }
         </div>
         <div className='controls'>
-          <div className='controlButton left'>{'<'}</div>
+          <div onClick={this.handleNavClick.bind(this, 'PREV')} className='controlButton left'>{'<'}</div>
           <div className='controlButton switcher'>
             <div onClick={this.handleSwitcherClick.bind(this, views.MONTH)} className={cn('', view == views.MONTH && 'active')}>month</div>
             <div onClick={this.handleSwitcherClick.bind(this, views.YEAR)} className={cn('', view == views.YEAR && 'active')}>year</div>
           </div>
-          <div className='controlButton right'>{'>'}</div>
+          <div onClick={this.handleNavClick.bind(this, 'NEXT')} className='controlButton right'>{'>'}</div>
         </div>
       </div>
     )
   }
   render() {
-    const { view } = this.state
+    const { view, month, year } = this.state
     const { data, actions } = this.props
     return (
       <div className='calendar'>
         <div className='month'>
           {this.renderCalendarCtrls()}
-          { view === views.MONTH && <Month data={data} actions={actions}/> }
-          { view === views.YEAR && <Year /> }
+          { view === views.MONTH && <Month year={year} month={month} data={data} actions={actions}/> }
+          { view === views.YEAR && <Year year={year} month={month} data={data} actions={actions} /> }
         </div>
       </div>
     )

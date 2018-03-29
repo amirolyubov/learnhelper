@@ -12,6 +12,8 @@ export const timestamps2percents = (start, end, now, max) => {
   return Number(current.toString().substring(0,3)) >= 100 ? 100 : Number(current.toString().substring(4,6))
 }
 
+export const date2beauty = date => `${['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+
 export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().getMonth(), year = new Date().getFullYear()) => {
   let matrix = [],
       today = new Date(),
@@ -43,4 +45,22 @@ export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().get
   return matrix
 }
 
-export const date2beauty = date => `${['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+export const generateYearTimestampsMatrix = (year = new Date().getFullYear(), month = 0) => {
+  let yearMatrix = [],
+      currentDate = new Date(`${year}-${month < 10 ? '0' + (month + 1).toString() : (month + 1)}-01T00:00:00`),
+      monthCounter = month
+  for (let i = 0; i < 6; i++) {
+    let monthRow = []
+    while (monthCounter === currentDate.getMonth()) {
+
+      // monthRow.push(currentDate)
+      monthRow.push(new Date(currentDate))
+      currentDate.setDate(currentDate.getDate() + 1)
+    }
+    monthCounter = monthCounter != 11 ? monthCounter + 1 : 0
+    yearMatrix.push(monthRow)
+  }
+  return yearMatrix
+}
+
+export const getMonths = () => ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
