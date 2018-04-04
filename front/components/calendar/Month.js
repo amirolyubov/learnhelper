@@ -9,12 +9,19 @@ class Month extends Component {
     this.state = {
       monthMatrix: [],
       year: 2018,
-      month: 2,
+      month: 3,
       selected: 0
     }
   }
   componentDidMount () {
     this.setState({
+      monthMatrix: generateMonthTimeStampsMatrix(true, this.state.month, this.state.year)
+    })
+  }
+  componentWillReceiveProps(props) {
+    this.setState({
+      month: props.month,
+      year: props.year,
       monthMatrix: generateMonthTimeStampsMatrix(true, this.state.month, this.state.year)
     })
   }
@@ -163,6 +170,7 @@ class Month extends Component {
 
   render() {
     const { monthMatrix } = this.state
+    console.log(this.state);
     return monthMatrix.map((week, key) => (
       <div key={key} className='week'>
         { week.map((day, dayKey) => this.renderDay(day, dayKey)) }

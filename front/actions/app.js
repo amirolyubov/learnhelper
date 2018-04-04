@@ -140,3 +140,10 @@ export const updateAddBookField = (field, value) => {
     payload: { field, value }
   }
 }
+
+export const selectMonth = (month, year) => {
+  return {
+    type: appTypes.SELECT_MONTH,
+    payload: { month, year }
+  }
+}

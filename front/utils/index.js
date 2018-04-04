@@ -15,33 +15,22 @@ export const timestamps2percents = (start, end, now, max) => {
 export const date2beauty = date => `${['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 
 export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().getMonth(), year = new Date().getFullYear()) => {
-  let matrix = [],
-      today = new Date(),
-      nextDay = new Date(new Date(new Date(today).setDate(1)).setMonth(month)).setYear(year)
+  let day = new Date()
+  const currentMonth = day.getMonth()
+  const toRussianWeek = weekDay => weekDay === 0 ? 6 : weekDay - 1
+  const createWeek = day => new Array(7)
+                            .fill(null)
+                            .map((i, key) => key == toRussianWeek(day.getDay())
+                                             ? new Date(day.setDate(day.getDate() + 1))
+                                             : null)
+                            .map(day => new Date(day.setDate(day.getDate() - 1)))
 
-  const generateWeek = () => {
-    let row = Array.apply(null, { length: 7 })
-    for (let i = new Date(nextDay).getDay(); i < 7; i++) {
-      row[i] = new Date(nextDay).getMonth() == month ? new Date(nextDay) : null
-      nextDay = new Date(nextDay).getDay() != 6
-      ? new Date(new Date(nextDay).setDate(new Date(nextDay).getDate() + 1))
-      : nextDay
-    }
-    return row
+  while (currentMonth == day.getMonth()) {
+    matrix.push(createWeek(day))
   }
-  for (; new Date(nextDay).getMonth() == month; ) {
-    matrix.push(generateWeek())
-    nextDay = new Date(new Date(nextDay).setDate(new Date(nextDay).getDate() + 1))
-  }
-  if (fromMonday) {
-    let monMatrix = []
-    matrix.map((row, key, arr) => {
-      row.shift()
-      row.push(arr[key + 1] ? arr[key + 1][0] : undefined)
-      monMatrix.push(row)
-    })
-    return monMatrix
-  }
+
+  console.log(matrix)
+
   return matrix
 }
 
@@ -52,8 +41,6 @@ export const generateYearTimestampsMatrix = (year = new Date().getFullYear(), mo
   for (let i = 0; i < 6; i++) {
     let monthRow = []
     while (monthCounter === currentDate.getMonth()) {
-
-      // monthRow.push(currentDate)
       monthRow.push(new Date(currentDate))
       currentDate.setDate(currentDate.getDate() + 1)
     }

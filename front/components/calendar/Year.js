@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
-
 import { generateYearTimestampsMatrix, getMonths } from '../../utils'
-
 
 class Month extends Component {
   constructor(props) {
@@ -12,10 +10,14 @@ class Month extends Component {
       month: 0
     }
   }
+  handleMonthClick() {
+    const { month, selectMonth } = this.props
+    selectMonth(month[0].getMonth(), month[0].getFullYear())
+  }
   render() {
     const { month } = this.props
     return (
-      <div className='month'>
+      <div onClick={this.handleMonthClick.bind(this)} className='month'>
         <div className='name'>{ getMonths()[month[0].getMonth()] } <span>{ month[0].getFullYear() }</span></div>
       </div>
     )
@@ -53,10 +55,11 @@ class Year extends Component {
 
   render() {
     const { yearMatrix } = this.state
-    console.log(this.props);
+    const { actions: { selectMonth } } = this.props
+
     return (
       <div className='year'>
-        { yearMatrix.map((month, key) => <Month key={key} month={month} />) }
+        { yearMatrix.map((month, key) => <Month key={key} selectMonth={selectMonth} month={month} />) }
       </div>
     )
   }

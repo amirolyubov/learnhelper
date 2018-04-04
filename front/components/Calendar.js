@@ -28,6 +28,14 @@ class Calendar extends Component {
     //
     // }
   }
+  componentWillReceiveProps(props) {
+    const { data: { calendarViewType, month, year } } = props
+    this.setState({
+      view: calendarViewType,
+      month: month,
+      year: year
+    })
+  }
 
   renderCalendarCtrls() {
     const { view } = this.state
