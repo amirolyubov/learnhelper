@@ -28,7 +28,6 @@ export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().get
   while (currentMonth == day.getMonth()) {
     matrix.push(createWeek(day))
   }
-  console.log('evavaev');
   return matrix
 }
 

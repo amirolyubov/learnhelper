@@ -146,13 +146,13 @@ class Month extends Component {
         onClick={this.handleDayClick.bind(this, day)}
         className={cn(
           'day',
-          new Date(day).getDate() == new Date().getDate() && 'today',
-          new Date(day).getDate() == selected && 'selected',
+          day.getDate() == new Date().getDate() && 'today',
+          day.getDate() == selected && 'selected',
           (key == 5 || key == 6) && 'holyday'
         )}
         >
-        <span>{ new Date(day).getDate() }</span>
-        { this.renderDayProcess(new Date(day), key) }
+        <span>{ day.getDate() }</span>
+        { this.renderDayProcess(day, key) }
       </div>
     )
   }
@@ -161,15 +161,14 @@ class Month extends Component {
     const { actions: { getDay, deselectDay } } = this.props
     const { selected } = this.state
 
-    new Date(day).getDate() != selected ? getDay(day) : deselectDay()
+    day.getDate() != selected ? getDay(day) : deselectDay()
     this.setState({
-      selected: new Date(day).getDate() != selected ? new Date(day).getDate() : 0
+      selected: day.getDate() != selected ? day.getDate() : 0
     })
   }
 
   render() {
     const { monthMatrix } = this.state
-    console.log(this.state);
     return monthMatrix.map((week, key) => (
       <div key={key} className='week'>
         { week.map((day, dayKey) => this.renderDay(day, dayKey)) }
