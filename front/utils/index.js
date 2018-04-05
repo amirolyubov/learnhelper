@@ -15,22 +15,20 @@ export const timestamps2percents = (start, end, now, max) => {
 export const date2beauty = date => `${['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'][date.getDay()]}, ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 
 export const generateMonthTimeStampsMatrix = (fromMonday, month = new Date().getMonth(), year = new Date().getFullYear()) => {
-  let day = new Date()
+  let day = new Date(new Date(new Date(new Date().setDate(1)).setMonth(month)).setYear(year)), matrix = []
   const currentMonth = day.getMonth()
   const toRussianWeek = weekDay => weekDay === 0 ? 6 : weekDay - 1
   const createWeek = day => new Array(7)
                             .fill(null)
-                            .map((i, key) => key == toRussianWeek(day.getDay())
+                            .map((i, key) => (day.getMonth() === currentMonth && key === toRussianWeek(day.getDay()))
                                              ? new Date(day.setDate(day.getDate() + 1))
                                              : null)
-                            .map(day => new Date(day.setDate(day.getDate() - 1)))
+                            .map(day => day && new Date(day.setDate(day.getDate() - 1)))
 
   while (currentMonth == day.getMonth()) {
     matrix.push(createWeek(day))
   }
-
-  console.log(matrix)
-
+  console.log('evavaev');
   return matrix
 }
 

@@ -135,25 +135,24 @@ class Month extends Component {
   }
   renderDay(day, key) {
     const { selected } = this.state
-    return (
+
+    return day === null
+    ? (
+      <div key={key} className='noday'></div>
+    )
+    : (
       <div
         key={key}
-        onClick={new Date(day).getDate() ? this.handleDayClick.bind(this, day) : null}
+        onClick={this.handleDayClick.bind(this, day)}
         className={cn(
-          isNaN(new Date(day).getDate()) ? 'noday' : 'day',
+          'day',
           new Date(day).getDate() == new Date().getDate() && 'today',
           new Date(day).getDate() == selected && 'selected',
           (key == 5 || key == 6) && 'holyday'
         )}
         >
-        <span>{ !isNaN(new Date(day).getDate()) && new Date(day).getDate() }</span>
-        { !isNaN(new Date(day).getDate()) && this.renderDayProcess(new Date(day), key) }
-        { !isNaN(new Date(day).getDate())
-          && (
-            <div>
-            </div>
-            )
-        }
+        <span>{ new Date(day).getDate() }</span>
+        { this.renderDayProcess(new Date(day), key) }
       </div>
     )
   }
