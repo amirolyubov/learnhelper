@@ -60,6 +60,8 @@ const getBooks_process = () => {
 }
 const getBooks_success = data => {
   data.books.forEach((book, key) => {
+    book.start = new Date(book.start)
+    book.end = new Date(book.end)
     book._top = key * 10
   })
   return {

@@ -81,46 +81,46 @@ class Month extends Component {
     const _current = new Date(day)
 
     const parseDate = (book, key) => {
-      if (new Date(book.start).getFullYear() < year) {
-        if (new Date(book.end).getFullYear() > year) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-        if (new Date(book.end).getFullYear() == year) {
-          if (new Date(book.end).getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          if (new Date(book.end).getMonth() == month) {
-            if (new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+      if (book.start.getFullYear() < year) {
+        if (book.end.getFullYear() > year) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+        if (book.end.getFullYear() == year) {
+          if (book.end.getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (book.end.getMonth() == month) {
+            if (book.end.getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (book.end.getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           }
         }
       }
-      if (new Date(book.end).getFullYear() > year) {
-        if (new Date(book.start).getFullYear() == year) {
-          if (new Date(book.start).getMonth() < month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          if (new Date(book.start).getMonth() == month) {
-            if (new Date(book.start).getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+      if (book.end.getFullYear() > year) {
+        if (book.start.getFullYear() == year) {
+          if (book.start.getMonth() < month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (book.start.getMonth() == month) {
+            if (book.start.getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (book.start.getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           }
         }
       }
-      if (new Date(book.start).getFullYear() == year &&
-          new Date(book.end).getFullYear() == year) {
-        if (new Date(book.start).getMonth() < month) {
-          if (new Date(book.end).getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          if (new Date(book.end).getMonth() == month) {
-            if (new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+      if (book.start.getFullYear() == year &&
+          book.end.getFullYear() == year) {
+        if (book.start.getMonth() < month) {
+          if (book.end.getMonth() > month) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (book.end.getMonth() == month) {
+            if (book.end.getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (book.end.getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           }
         }
-        if (new Date(book.end).getMonth() > month) {
-          if (new Date(book.start).getMonth() == month) {
-            if (new Date(book.start).getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-            if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+        if (book.end.getMonth() > month) {
+          if (book.start.getMonth() == month) {
+            if (book.start.getDate() < _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+            if (book.start.getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
           }
         }
-        if (new Date(book.start).getMonth() == month &&
-            new Date(book.end).getMonth() == month) {
-          if (new Date(book.start).getDate() < _current.getDate() &&
-              new Date(book.end).getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          if (new Date(book.start).getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
-          if (new Date(book.end).getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+        if (book.start.getMonth() == month &&
+            book.end.getMonth() == month) {
+          if (book.start.getDate() < _current.getDate() &&
+              book.end.getDate() > _current.getDate()) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (book.start.getDate() == _current.getDate()) return this.renderBookStatus('start', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
+          if (book.end.getDate() == _current.getDate()) return this.renderBookStatus('end', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)
         }
       }
     }
