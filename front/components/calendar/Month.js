@@ -9,7 +9,7 @@ class Month extends Component {
     this.state = {
       monthMatrix: [],
       year: 2018,
-      month: 3,
+      month: 0,
       selected: 0
     }
   }
@@ -79,6 +79,8 @@ class Month extends Component {
     const { data: { books, hoveredBook } } = this.props
     const { month, year } = this.state
     const _current = new Date(day)
+
+    console.log(month, year);
 
     const parseDate = (book, key) => {
       if (book.start.getFullYear() < year) {

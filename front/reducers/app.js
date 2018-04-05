@@ -18,11 +18,11 @@ const initialState = {
 
   // META
   hoveredBook: -1,
-  isBooksLoading: true,
+  isBooksLoading: false,
   isDayLoading: false,
-  infoDataType: infoDataTypes.BOOKS,
   month: new Date().getMonth(),
   year: new Date().getFullYear(),
+  infoDataType: infoDataTypes.BOOKS,
   calendarViewType: calendarViewTypes.MONTH
 }
 

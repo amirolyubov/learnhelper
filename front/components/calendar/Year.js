@@ -30,7 +30,7 @@ class Year extends Component {
 
     this.state = {
       year: 2018,
-      month: 8,
+      month: 0,
       yearMatrix: []
     }
   }
@@ -56,6 +56,8 @@ class Year extends Component {
   render() {
     const { yearMatrix } = this.state
     const { actions: { selectMonth } } = this.props
+
+    console.log(this.state.month, this.state.year);
 
     return (
       <div className='year'>
