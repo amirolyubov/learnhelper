@@ -57,8 +57,6 @@ class Year extends Component {
     const { yearMatrix } = this.state
     const { actions: { selectMonth } } = this.props
 
-    console.log(this.state.month, this.state.year);
-
     return (
       <div className='year'>
         { yearMatrix.map((month, key) => <Month key={key} selectMonth={selectMonth} month={month} />) }

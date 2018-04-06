@@ -80,8 +80,6 @@ class Month extends Component {
     const { month, year } = this.state
     const _current = new Date(day)
 
-    console.log(month, year);
-
     const parseDate = (book, key) => {
       if (book.start.getFullYear() < year) {
         if (book.end.getFullYear() > year) return this.renderBookStatus('process', { top: book._top, color: book.color, hovered: key == hoveredBook }, key)

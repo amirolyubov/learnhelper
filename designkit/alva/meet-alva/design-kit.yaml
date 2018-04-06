@@ -1,0 +1,398 @@
+root:
+  _type: pattern
+  uuid: aa68c444-2164-46e7-8384-f0b9460d293e
+  pattern: atoms/layout/index
+  children:
+    - _type: pattern
+      uuid: cf378877-c690-45aa-8d49-6714cebb7463
+      pattern: atoms/layout/index
+      children:
+        - _type: pattern
+          uuid: 1df5f8ee-6bc8-4b49-8afa-a7a59ca0a494
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: XL
+        - _type: pattern
+          uuid: 19952505-6ad8-43e8-831f-811bfc0e047d
+          pattern: atoms/layout/index
+          children:
+            - _type: pattern
+              uuid: 356b4ea2-5402-42af-8ffd-79bfba671fc7
+              pattern: atoms/image/index
+              children: []
+              properties:
+                alt: ''
+                className: ''
+                src: >-
+                  http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/light-bulb-icon.png
+                size: 100px
+            - _type: pattern
+              uuid: 44ea8039-f3f5-4c55-ab9b-f21e59bafab5
+              pattern: atoms/headline/index
+              children: []
+              properties:
+                tagName: h2
+                order: 2
+                color: '#FFFFFF'
+                textAlign: Left
+                level: H1
+                text: Design Kit
+            - _type: pattern
+              uuid: bfc2dc68-0f71-42bb-a7b9-800ce9101096
+              pattern: atoms/copy/index
+              children:
+                - _type: pattern
+                  uuid: 41fb28e7-ebf3-4e0b-90f9-9fd771d85905
+                  children: []
+                  properties: {}
+              properties:
+                text: No own pattern library? No problem!
+                color: '#FFFFFF'
+                size: Medium
+                textAlign: Left
+          properties:
+            direction: VERTICAL
+            maxWidth: 720px
+            backgroundColor: transparent
+        - _type: pattern
+          uuid: 71d9c4da-585f-4ca2-bd7d-ca142de3aa59
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: XL
+      properties:
+        direction: VERTICAL
+        maxWidth: 100%
+        backgroundColor: '#0070D6'
+    - _type: pattern
+      uuid: faaef1be-3d8b-4062-b1d3-8cf902ad6723
+      pattern: atoms/layout/index
+      children:
+        - _type: pattern
+          uuid: e3a640f8-968e-4f8f-b4bc-6ac6b77b71a6
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: XL
+        - _type: pattern
+          uuid: 269a21b0-ba36-4d1b-b4a7-2ab8bfb9b634
+          pattern: atoms/layout/index
+          children:
+            - _type: pattern
+              uuid: 788c1153-3509-439f-bc3e-152a52e2df0e
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: c1d5d244-358c-4ae1-a5a2-92843c3976ab
+                  pattern: atoms/headline/index
+                  children: []
+                  properties:
+                    tagName: h2
+                    order: 2
+                    color: '#0070D6'
+                    textAlign: Left
+                    level: H2
+                    text: Optimized Components
+                - _type: pattern
+                  uuid: a307c3f4-6e93-421d-8ce5-1023a3e7a213
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    text: >-
+                      Components within the design kit are optimized to work
+                      best with Alva. But they follow the industry standard to
+                      work in all environments.
+                    color: ''
+                    size: Medium
+                    textAlign: Left
+              properties:
+                direction: VERTICAL
+                maxWidth: 50%
+                backgroundColor: transparent
+            - _type: pattern
+              uuid: 575d8268-7ec6-464a-8750-acc52c2da011
+              pattern: atoms/space/index
+              children: []
+              properties:
+                size: XL
+            - _type: pattern
+              uuid: c27b7b32-acbc-4820-b26a-bdb66ff17989
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: 6087b0e5-6f0a-4906-88ba-796cfb67c81d
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: S
+                - _type: pattern
+                  uuid: 5be493dc-2de5-4624-8d67-4fac1c7b3e5d
+                  pattern: atoms/button/index
+                  children: []
+                  properties:
+                    disabled: false
+                    primary: true
+                    text: Primary
+                - _type: pattern
+                  uuid: c18d38c9-d9a0-4db9-9c10-20f815b4ef9e
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: S
+                - _type: pattern
+                  uuid: 3e0c592b-e267-4754-ab32-6ed8cdce5c12
+                  pattern: atoms/button/index
+                  children: []
+                  properties:
+                    disabled: false
+                    primary: false
+                    text: Secondary
+                - _type: pattern
+                  uuid: 47438d9a-64b4-44d0-b465-409a5434de54
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: S
+                - _type: pattern
+                  uuid: 8ce749a2-b3ff-497f-abe4-4edafd2c6fca
+                  pattern: atoms/button/index
+                  children: []
+                  properties:
+                    disabled: true
+                    primary: false
+                    text: Disabled
+                - _type: pattern
+                  uuid: 248ba866-3866-4d8f-b44d-39f112e8b5ca
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: S
+                - _type: pattern
+                  uuid: 7f4b3a13-a39b-4d0f-8fbb-9b08a5781dad
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    size: Small
+                    textAlign: Right
+                    text: Easily define properties
+                    color: '#808080'
+              properties:
+                direction: VERTICAL
+                maxWidth: 40%
+                backgroundColor: ''
+          properties:
+            direction: HORIZONTAL
+            maxWidth: 720px
+            backgroundColor: transparent
+        - _type: pattern
+          uuid: e43e13e5-bbc0-4f31-ba64-7b77873bcc0c
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: XL
+      properties:
+        direction: VERTICAL
+        maxWidth: 100%
+        backgroundColor: transparent
+    - _type: pattern
+      uuid: a12ab0b2-f051-429c-88c6-7ca9b2da69fa
+      pattern: atoms/layout/index
+      children:
+        - _type: pattern
+          uuid: 130f7d98-48ec-4c03-bed3-3a7b4b27d29e
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: M
+        - _type: pattern
+          uuid: a10c0629-bbcd-4cf8-9802-a258d0c369e2
+          pattern: atoms/layout/index
+          children:
+            - _type: pattern
+              uuid: 1e276381-c27c-45c5-a990-78e85b1590b9
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: a4d43836-b0b2-4b6f-8401-cf530d1c0027
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: M
+                - _type: pattern
+                  uuid: 67400e78-aca5-4a9e-82ec-0d38e04142da
+                  pattern: atoms/image/index
+                  children: []
+                  properties:
+                    alt: ''
+                    className: ''
+                    src: 'https://meetalva.io/images/alva-coding.png'
+                    size: ''
+              properties:
+                direction: VERTICAL
+                maxWidth: 40%
+                backgroundColor: ''
+            - _type: pattern
+              uuid: 8fc70f1a-08c0-4a51-8cd1-0e0a0b5642a8
+              pattern: atoms/space/index
+              children: []
+              properties:
+                size: XL
+            - _type: pattern
+              uuid: d8fa8bc6-6b5f-4678-a787-6ca017a43b3c
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: 5f52c144-34bf-45da-94b3-e431344ae67a
+                  pattern: atoms/headline/index
+                  children: []
+                  properties:
+                    tagName: h2
+                    order: 2
+                    color: '#0070D6'
+                    textAlign: Right
+                    level: H2
+                    text: Create your own!
+                - _type: pattern
+                  uuid: 3e7c9a27-5889-4306-8b48-6bf57c74e5ef
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    text: >-
+                      Most projects rely on special components to fit their
+                      specific need. We won't limit your in your imagination,
+                      just open up your favourite code editor and go wild.
+                    color: ''
+                    size: Medium
+                    textAlign: Right
+                - _type: pattern
+                  uuid: 55801861-1da7-4664-9c8c-e1240b567f1d
+                  pattern: atoms/space/index
+                  children: []
+                  properties:
+                    size: S
+                - _type: pattern
+                  uuid: b4e25f48-9684-42e3-a6d0-1a297526611e
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    size: Small
+                    textAlign: Right
+                    text: >-
+                      (Alva currently supports React components written in
+                      typescript and styled components)
+                    color: '#808080'
+              properties:
+                direction: VERTICAL
+                maxWidth: 50%
+                backgroundColor: transparent
+          properties:
+            direction: HORIZONTAL
+            maxWidth: 720px
+            backgroundColor: transparent
+        - _type: pattern
+          uuid: 08dc752c-ae27-437f-8e69-253f81635dca
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: XL
+      properties:
+        direction: VERTICAL
+        maxWidth: 100%
+        backgroundColor: transparent
+    - _type: pattern
+      uuid: 5eb1b3c7-9f61-4f27-bfff-838895cc8756
+      pattern: atoms/layout/index
+      children:
+        - _type: pattern
+          uuid: 23511cbd-1f7f-4916-a8f7-f8a791931a1f
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: L
+        - _type: pattern
+          uuid: 3178d65e-7915-4943-85f4-c4cc87e5ecd0
+          pattern: atoms/layout/index
+          children:
+            - _type: pattern
+              uuid: a5192e5f-4d83-48ac-9af6-50d5b5206757
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: 40d21836-acc0-4220-a331-c9b5f903e167
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    text: Real react based components
+                    color: '#FFFFFF'
+                    size: Medium
+                    textAlign: Center
+              properties:
+                direction: VERTICAL
+                maxWidth: 30%
+                backgroundColor: transparent
+            - _type: pattern
+              uuid: 632a4882-0ffb-4041-9ca8-b6e943095fbc
+              pattern: atoms/space/index
+              children: []
+              properties:
+                size: M
+            - _type: pattern
+              uuid: 9df6be7b-48dd-45e5-bdda-593de85265a6
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: 6499a5e3-1fea-4e24-99bf-76f5f0bb507e
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    text: Optimized to use with Alva
+                    color: '#FFFFFF'
+                    size: Medium
+                    textAlign: Center
+              properties:
+                direction: VERTICAL
+                maxWidth: 30%
+                backgroundColor: transparent
+            - _type: pattern
+              uuid: 0cc08ec8-4f12-40fa-820b-1c2a2cf32ff0
+              pattern: atoms/space/index
+              children: []
+              properties:
+                size: M
+            - _type: pattern
+              uuid: ad4e5823-c05f-4d32-b02d-548c4db63486
+              pattern: atoms/layout/index
+              children:
+                - _type: pattern
+                  uuid: e08627e8-6259-4a18-bffa-b7740a2feeae
+                  pattern: atoms/copy/index
+                  children: []
+                  properties:
+                    text: Create your own and extend the design kit
+                    color: '#FFFFFF'
+                    size: Medium
+                    textAlign: Center
+              properties:
+                direction: VERTICAL
+                maxWidth: 30%
+                backgroundColor: transparent
+          properties:
+            direction: HORIZONTAL
+            maxWidth: 720px
+            backgroundColor: transparent
+        - _type: pattern
+          uuid: 328149c9-6e41-4fa5-8b1c-9e088a24b655
+          pattern: atoms/space/index
+          children: []
+          properties:
+            size: L
+      properties:
+        direction: VERTICAL
+        maxWidth: 100%
+        backgroundColor: '#343D45'
+  properties:
+    maxSize: 80%
+    direction: VERTICAL
+    maxWidth: 100%
+    backgroundColor: transparent
