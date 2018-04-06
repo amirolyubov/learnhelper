@@ -1,5 +1,7 @@
 import * as appTypes from '../constants/appTypes.js'
 import * as infoDataTypes from '../constants/infoDataTypes.js'
+import * as calendarViewTypes from '../constants/calendarViewTypes'
+
 const initialState = {
   books: [],
   events: [],
@@ -16,9 +18,12 @@ const initialState = {
 
   // META
   hoveredBook: -1,
-  isBooksLoading: true,
+  isBooksLoading: false,
   isDayLoading: false,
-  infoDataType: infoDataTypes.BOOKS
+  month: new Date().getMonth(),
+  year: new Date().getFullYear(),
+  infoDataType: infoDataTypes.BOOKS,
+  calendarViewType: calendarViewTypes.MONTH
 }
 
 const app = (state = initialState, action) => {
@@ -57,6 +62,13 @@ const app = (state = initialState, action) => {
         ...state,
         err: action.payload.err,
         isBooksLoading: false
+      }
+    case appTypes.SELECT_MONTH:
+      return {
+        ...state,
+        calendarViewType: calendarViewTypes.MONTH,
+        month: action.payload.month,
+        year: action.payload.year
       }
     case appTypes.SAVE_BOOK_PROCESS:
       return {

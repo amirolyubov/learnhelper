@@ -60,6 +60,8 @@ const getBooks_process = () => {
 }
 const getBooks_success = data => {
   data.books.forEach((book, key) => {
+    book.start = new Date(book.start)
+    book.end = new Date(book.end)
     book._top = key * 10
   })
   return {
@@ -138,5 +140,12 @@ export const updateAddBookField = (field, value) => {
   return {
     type: appTypes.UPDATE_ADD_BOOK_FIELD,
     payload: { field, value }
+  }
+}
+
+export const selectMonth = (month, year) => {
+  return {
+    type: appTypes.SELECT_MONTH,
+    payload: { month, year }
   }
 }
